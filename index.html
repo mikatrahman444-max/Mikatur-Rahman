@@ -84,7 +84,7 @@
         font-size: 16px;
         line-height: 1.65;
         -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
+        overflow-x: clip;
       }
 
       h1,
@@ -125,6 +125,12 @@
 
       .section {
         padding: 88px 0;
+      }
+
+      section[id],
+      main[id],
+      #book-appointment {
+        scroll-margin-top: 80px;
       }
 
       .section-soft {
@@ -171,11 +177,19 @@
       .site-header {
         position: sticky;
         top: 0;
-        z-index: 50;
-        background: rgba(255, 255, 255, 0.9);
+        z-index: 1000;
+        width: 100%;
+        isolation: isolate;
+        background: rgba(255, 255, 255, 0.94);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid #e2e8f0;
+        transition: box-shadow 200ms var(--ease), background-color 200ms var(--ease);
+      }
+
+      .site-header.scrolled {
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
       }
 
       .header-inner {
@@ -183,8 +197,12 @@
         align-items: center;
         justify-content: space-between;
         gap: 32px;
-        min-height: 78px;
-        padding: 19px 0;
+        height: 80px;
+        transition: height 200ms var(--ease);
+      }
+
+      .site-header.scrolled .header-inner {
+        height: 68px;
       }
 
       .brand-link {
@@ -251,11 +269,17 @@
         transition: transform 180ms var(--ease);
       }
 
-      .nav-link:hover {
-        color: var(--text);
+      .nav-link:hover,
+      .nav-link.active {
+        color: #6332f0;
       }
 
-      .nav-link:hover::after {
+      .nav-link.active {
+        font-weight: 600;
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
         transform: scaleX(1);
       }
 
@@ -331,20 +355,41 @@
 
       .mobile-drawer {
         display: none;
-        border-top: 1px solid var(--border);
-        background: var(--bg);
-        padding: 16px 24px 20px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: #ffffff;
+        border-top: 1px solid #e2e8f0;
+        border-bottom: 1px solid #e2e8f0;
+        box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+        padding: 14px 20px 22px;
+        z-index: 999;
       }
 
       .mobile-drawer.open {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 4px;
       }
 
       .mobile-drawer .nav-link {
-        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 10px 4px;
         font-size: 15px;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .mobile-drawer .nav-link::after {
+        display: none;
+      }
+
+      .mobile-drawer .nav-link.active {
+        color: #6332f0;
+        font-weight: 600;
       }
 
       /* 1. Hero Section */
@@ -1700,6 +1745,16 @@
       }
 
       @media (max-width: 768px) {
+        .container {
+          padding: 0 18px;
+        }
+
+        section[id],
+        main[id],
+        #book-appointment {
+          scroll-margin-top: 66px;
+        }
+
         .main-nav,
         .header-cta {
           display: none;
@@ -1710,8 +1765,11 @@
         }
 
         .header-inner {
-          min-height: 64px;
-          padding: 16px 0;
+          height: 64px;
+        }
+
+        .site-header.scrolled .header-inner {
+          height: 58px;
         }
 
         .brand-mark {
@@ -1726,38 +1784,157 @@
         }
 
         .section {
-          padding: 64px 0;
+          padding: 56px 0;
+        }
+
+        .section-head {
+          margin-bottom: 32px;
         }
 
         .hero {
-          padding: 44px 0 56px;
+          padding: 36px 0 52px;
+        }
+
+        .hero-grid {
+          gap: 32px;
+        }
+
+        .hero-sub {
+          font-size: 16px;
+          margin-bottom: 24px;
+        }
+
+        .hero-ctas {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 10px;
+        }
+
+        .hero-ctas .btn {
+          width: 100%;
+        }
+
+        .hero-facts {
+          gap: 8px 12px;
+          font-size: 13px;
         }
 
         .workflow-stage {
-          height: 360px;
+          height: 320px;
         }
 
         .wf-node {
-          padding: 10px 12px;
-          gap: 9px;
+          padding: 9px 11px;
+          gap: 8px;
+          border-radius: 12px;
+          max-width: 46%;
+        }
+
+        .wf-node-center {
+          max-width: 72%;
+          padding: 11px 14px;
+          border-radius: 14px;
+        }
+
+        .wf-node-chat {
+          top: 16px;
+          left: 12px;
+        }
+
+        .wf-node-email {
+          top: 16px;
+          right: 12px;
+        }
+
+        .wf-node-cart {
+          bottom: 16px;
+          left: 12px;
+        }
+
+        .wf-node-gear {
+          bottom: 16px;
+          right: 12px;
         }
 
         .wf-icon {
-          width: 32px;
-          height: 32px;
+          width: 28px;
+          height: 28px;
+          border-radius: 8px;
         }
 
         .wf-node-center .wf-icon {
-          width: 36px;
-          height: 36px;
+          width: 34px;
+          height: 34px;
         }
 
         .wf-label {
-          font-size: 12px;
+          font-size: 11.5px;
+          white-space: normal;
+          line-height: 1.2;
         }
 
         .wf-sub {
           display: none;
+        }
+
+        .video-frame {
+          aspect-ratio: auto;
+          min-height: 290px;
+          padding: 28px 18px;
+        }
+
+        .video-placeholder-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .video-placeholder-actions .btn {
+          width: 100%;
+        }
+
+        .booking-box {
+          padding: 22px 18px;
+        }
+
+        .channel-tabs,
+        .day-grid,
+        .slot-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+        }
+
+        .seg-btn {
+          width: 100%;
+          text-align: center;
+          padding: 9px 10px;
+          font-size: 12.5px;
+          white-space: normal;
+          line-height: 1.25;
+        }
+
+        .booking-confirm-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .booking-confirm-actions .btn {
+          width: 100%;
+        }
+
+        .pricing-card,
+        .demo-card,
+        .service-card,
+        .problem-card,
+        .step-card,
+        .trust-card,
+        .about-visual,
+        .contact-form-card {
+          padding: 22px 18px;
+        }
+
+        .pkg-desc {
+          min-height: 0;
         }
 
         .steps-grid,
@@ -1766,12 +1943,47 @@
           grid-template-columns: 1fr;
         }
 
-        .founding-card {
-          padding: 28px 22px;
+        .about-detail-row {
+          flex-wrap: wrap;
+          gap: 4px 12px;
         }
 
-        .booking-box {
-          padding: 22px 18px;
+        .about-detail-value {
+          text-align: left;
+        }
+
+        .faq-trigger {
+          padding: 16px 18px;
+          font-size: 15px;
+        }
+
+        .faq-panel {
+          padding: 0 18px 16px;
+        }
+
+        .contact-card {
+          padding: 14px 16px;
+        }
+
+        .contact-card-value {
+          font-size: 14px;
+        }
+
+        .founding-card {
+          padding: 26px 20px;
+        }
+
+        .founding-card .btn {
+          width: 100%;
+        }
+
+        .footer-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .footer-links {
+          gap: 12px 18px;
         }
       }
 
@@ -1797,7 +2009,7 @@
   </head>
   <body>
     <!-- Top Navigation (3-Zone Contract) -->
-    <header class="site-header">
+    <header class="site-header" id="siteHeader">
       <div class="container header-inner">
         <a href="#top" class="brand-link" aria-label="Autoverse home">
           <img
@@ -1826,7 +2038,7 @@
             aria-expanded="false"
             aria-controls="mobileDrawer"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg id="mobileMenuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
             </svg>
           </button>
@@ -1839,7 +2051,7 @@
         <a href="#demos" class="nav-link">Demos</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#faq" class="nav-link">FAQ</a>
-        <a href="#contact" class="btn btn-primary" style="margin-top: 8px">Get Free Demo</a>
+        <a href="#contact" class="btn btn-primary" style="margin-top: 12px; width: 100%">Get Free Demo</a>
       </div>
     </header>
 
@@ -3033,21 +3245,98 @@
           }
         });
 
-        // 8. Mobile Drawer Toggle
+        // 8. Sticky Navbar Scroll State, Active Section Link & Mobile Drawer
+        const siteHeader = document.getElementById('siteHeader');
         const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
         const mobileDrawer = document.getElementById('mobileDrawer');
+
+        function setMobileMenuState(open) {
+          if (!mobileBtn || !mobileDrawer) return;
+          mobileDrawer.classList.toggle('open', open);
+          mobileBtn.setAttribute('aria-expanded', String(open));
+          mobileBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+          if (mobileMenuIcon) {
+            mobileMenuIcon.innerHTML = open
+              ? '<path d="M18 6 6 18M6 6l12 12" stroke-linecap="round" />'
+              : '<path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />';
+          }
+        }
+
         if (mobileBtn && mobileDrawer) {
-          mobileBtn.addEventListener('click', () => {
-            const isOpen = mobileDrawer.classList.toggle('open');
-            mobileBtn.setAttribute('aria-expanded', String(isOpen));
+          mobileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = !mobileDrawer.classList.contains('open');
+            setMobileMenuState(isOpen);
           });
 
           mobileDrawer.querySelectorAll('a').forEach((link) => {
-            link.addEventListener('click', () => {
-              mobileDrawer.classList.remove('open');
-              mobileBtn.setAttribute('aria-expanded', 'false');
-            });
+            link.addEventListener('click', () => setMobileMenuState(false));
           });
+
+          document.addEventListener('click', (e) => {
+            if (
+              mobileDrawer.classList.contains('open') &&
+              !mobileDrawer.contains(e.target) &&
+              !mobileBtn.contains(e.target)
+            ) {
+              setMobileMenuState(false);
+            }
+          });
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
+              setMobileMenuState(false);
+            }
+          });
+        }
+
+        // Scroll shadow + height transition (>10px) & active nav link tracking
+        const navTargets = ['services', 'packages', 'demos', 'about', 'faq'];
+        const navLinksAll = Array.from(document.querySelectorAll('.main-nav .nav-link, .mobile-drawer .nav-link'));
+        const observedSections = navTargets
+          .map((id) => document.getElementById(id))
+          .filter(Boolean);
+
+        function updateActiveNav(activeId) {
+          navLinksAll.forEach((link) => {
+            const matches = link.getAttribute('href') === `#${activeId}`;
+            link.classList.toggle('active', matches);
+          });
+        }
+
+        function onScrollCheck() {
+          if (siteHeader) {
+            siteHeader.classList.toggle('scrolled', window.scrollY > 10);
+          }
+          // Fallback scroll-spy calculation for precise active highlight
+          const offset = (siteHeader ? siteHeader.offsetHeight : 80) + 40;
+          const scrollPos = window.scrollY + offset;
+          let currentId = '';
+          for (const sec of observedSections) {
+            if (sec.offsetTop <= scrollPos) {
+              currentId = sec.id;
+            }
+          }
+          updateActiveNav(currentId);
+        }
+
+        window.addEventListener('scroll', onScrollCheck, { passive: true });
+        onScrollCheck();
+
+        if ('IntersectionObserver' in window && observedSections.length) {
+          const navObserver = new IntersectionObserver(
+            (entries) => {
+              const visible = entries
+                .filter((entry) => entry.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+              if (visible.length > 0) {
+                updateActiveNav(visible[0].target.id);
+              }
+            },
+            { rootMargin: '-20% 0px -60% 0px', threshold: [0.1, 0.35, 0.6] }
+          );
+          observedSections.forEach((sec) => navObserver.observe(sec));
         }
 
         // 9. FAQ Accordion
