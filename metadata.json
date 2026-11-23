@@ -1,0 +1,6 @@
+{
+  "name": "Autoverse",
+  "description": "Autoverse: AI automation and chatbots for e-commerce brands that want to save time and scale smarter.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

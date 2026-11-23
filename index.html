@@ -1,0 +1,3308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autoverse — AI Automation for Online Stores</title>
+    <meta
+      name="description"
+      content="Autoverse: AI automation and chatbots for e-commerce brands that want to save time and scale smarter."
+    />
+    <meta property="og:title" content="Autoverse — AI Automation for Online Stores" />
+    <meta
+      property="og:description"
+      content="Autoverse: AI automation and chatbots for e-commerce brands that want to save time and scale smarter."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="/assets/aistudio/Autoverse_logo_icon_design_e18586a8_0221d1e1.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="/assets/aistudio/Autoverse_logo_icon_design_e18586a8_0221d1e1.jpg"
+    />
+    <link
+      rel="icon"
+      type="image/jpeg"
+      href="/assets/aistudio/Autoverse_logo_icon_design_e18586a8_0221d1e1.jpg"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/assets/aistudio/Autoverse_logo_icon_design_e18586a8_0221d1e1.jpg"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --bg-soft: #f8fafc;
+        --surface: #ffffff;
+        --surface-muted: #f1f5f9;
+        --text: #0f172a;
+        --text-body: #334155;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --border-strong: #cbd5e1;
+        --accent: #6332f0;
+        --accent-hover: #5124d6;
+        --accent-soft: rgba(99, 50, 240, 0.08);
+        --accent-glow: rgba(99, 50, 240, 0.22);
+        --success: #0f766e;
+        --success-soft: rgba(15, 118, 110, 0.09);
+        --radius-sm: 10px;
+        --radius-md: 14px;
+        --radius-lg: 20px;
+        --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+        --shadow-card: 0 12px 32px -12px rgba(15, 23, 42, 0.08);
+        --shadow-node: 0 18px 36px -14px rgba(15, 23, 42, 0.14), 0 4px 12px -4px rgba(99, 50, 240, 0.12);
+        --container: 1160px;
+        --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        background-color: var(--bg);
+        color: var(--text-body);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 16px;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .font-heading {
+        font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: var(--text);
+        margin: 0;
+        letter-spacing: -0.025em;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      .tabular-nums {
+        font-variant-numeric: tabular-nums;
+      }
+
+      .container {
+        width: 100%;
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .section {
+        padding: 88px 0;
+      }
+
+      .section-soft {
+        background-color: var(--bg-soft);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .section-head {
+        max-width: 680px;
+        margin-bottom: 48px;
+      }
+
+      .kicker {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 10px;
+        letter-spacing: 0.01em;
+      }
+
+      .section-title {
+        font-size: clamp(1.75rem, 2.8vw, 2.35rem);
+        line-height: 1.2;
+        font-weight: 700;
+        text-wrap: balance;
+        margin-bottom: 14px;
+      }
+
+      .section-lead {
+        font-size: 17px;
+        color: var(--text-muted);
+        line-height: 1.65;
+      }
+
+      /* Focus Accessibility */
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      /* Top Bar (3-Zone Contract) */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        min-height: 78px;
+        padding: 19px 0;
+      }
+
+      .brand-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        color: #0f172a;
+        white-space: nowrap;
+        flex-shrink: 0;
+        letter-spacing: -0.02em;
+      }
+
+      .brand-mark {
+        height: 38px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+        flex-shrink: 0;
+        mix-blend-mode: multiply;
+        animation: logoReveal 380ms var(--ease) both;
+      }
+
+      @keyframes logoReveal {
+        from {
+          opacity: 0;
+          transform: scale(0.92);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .main-nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .nav-link {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-muted);
+        white-space: nowrap;
+        flex-shrink: 0;
+        padding: 6px 0;
+        position: relative;
+        transition: color 180ms var(--ease);
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 2px;
+        height: 1.5px;
+        background: var(--accent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 180ms var(--ease);
+      }
+
+      .nav-link:hover {
+        color: var(--text);
+      }
+
+      .nav-link:hover::after {
+        transform: scaleX(1);
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 42px;
+        padding: 10px 20px;
+        border-radius: var(--radius-sm);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.2;
+        white-space: nowrap;
+        flex-shrink: 0;
+        border: 1px solid transparent;
+        transition: transform 160ms var(--ease), background-color 160ms var(--ease),
+          border-color 160ms var(--ease), color 160ms var(--ease), box-shadow 160ms var(--ease);
+      }
+
+      .btn:active {
+        transform: translateY(1px);
+      }
+
+      .btn-primary {
+        background-color: var(--accent);
+        color: #ffffff;
+        box-shadow: 0 6px 18px -6px rgba(99, 50, 240, 0.55);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--accent-hover);
+        box-shadow: 0 10px 22px -6px rgba(99, 50, 240, 0.65);
+      }
+
+      .btn-secondary {
+        background-color: var(--surface);
+        color: var(--text);
+        border-color: var(--border-strong);
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--text);
+        background-color: var(--bg-soft);
+      }
+
+      .btn-lg {
+        min-height: 48px;
+        padding: 12px 24px;
+        font-size: 15px;
+      }
+
+      .mobile-toggle {
+        display: none;
+        width: 42px;
+        height: 42px;
+        align-items: center;
+        justify-content: center;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        color: var(--text);
+      }
+
+      .mobile-drawer {
+        display: none;
+        border-top: 1px solid var(--border);
+        background: var(--bg);
+        padding: 16px 24px 20px;
+      }
+
+      .mobile-drawer.open {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .mobile-drawer .nav-link {
+        padding: 10px 0;
+        font-size: 15px;
+      }
+
+      /* 1. Hero Section */
+      .hero {
+        padding: 72px 0 84px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-bg-logo {
+        position: absolute;
+        top: 50%;
+        right: -4%;
+        transform: translateY(-50%);
+        width: min(46vw, 540px);
+        height: auto;
+        object-fit: contain;
+        opacity: 0.07;
+        mix-blend-mode: multiply;
+        pointer-events: none;
+        user-select: none;
+        z-index: 0;
+      }
+
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: 52px;
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-muted);
+        margin-bottom: 18px;
+      }
+
+      .hero-meta-brand {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .hero-title {
+        font-size: clamp(2.25rem, 4.1vw, 3.6rem);
+        line-height: 1.1;
+        font-weight: 700;
+        text-wrap: balance;
+        margin-bottom: 20px;
+      }
+
+      .hero-sub {
+        font-size: 18px;
+        line-height: 1.65;
+        color: var(--text-muted);
+        max-width: 540px;
+        margin-bottom: 30px;
+      }
+
+      .hero-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .hero-facts {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px 18px;
+        padding-top: 22px;
+        border-top: 1px solid var(--border);
+        font-size: 13.5px;
+        color: var(--text-muted);
+      }
+
+      .hero-facts strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      /* CSS 3D Workflow Stage */
+      .workflow-stage-wrap {
+        perspective: 1100px;
+        width: 100%;
+      }
+
+      .workflow-stage {
+        position: relative;
+        height: 430px;
+        border-radius: var(--radius-lg);
+        background: radial-gradient(circle at 50% 45%, rgba(99, 50, 240, 0.09), rgba(248, 250, 252, 0.92) 70%);
+        border: 1px solid rgba(99, 50, 240, 0.14);
+        box-shadow: var(--shadow-card);
+        transform-style: preserve-3d;
+        transition: transform 220ms var(--ease);
+        overflow: hidden;
+      }
+
+      .workflow-grid-bg {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+        background-size: 32px 32px;
+        mask-image: radial-gradient(circle at center, black 45%, transparent 92%);
+        -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 92%);
+        pointer-events: none;
+      }
+
+      .workflow-lines {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .flow-line {
+        fill: none;
+        stroke: rgba(99, 50, 240, 0.34);
+        stroke-width: 1.75;
+        stroke-linecap: round;
+        filter: drop-shadow(0 0 6px rgba(99, 50, 240, 0.35));
+      }
+
+      .flow-pulse {
+        fill: none;
+        stroke: #6332f0;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-dasharray: 10 80;
+        animation: dashFlow 4.2s linear infinite;
+      }
+
+      .flow-pulse-delay {
+        animation-delay: -2.1s;
+      }
+
+      .wf-node {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 13px 16px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.84);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.95);
+        box-shadow: var(--shadow-node), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+        transform-style: preserve-3d;
+        user-select: none;
+        will-change: transform;
+      }
+
+      .wf-node::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        border: 1px solid rgba(99, 50, 240, 0.14);
+        pointer-events: none;
+      }
+
+      .wf-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+      }
+
+      .wf-node-center .wf-icon {
+        width: 44px;
+        height: 44px;
+        background: var(--accent);
+        color: #ffffff;
+        box-shadow: 0 8px 18px -6px rgba(99, 50, 240, 0.65);
+      }
+
+      .wf-label {
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text);
+        line-height: 1.25;
+        white-space: nowrap;
+      }
+
+      .wf-sub {
+        font-size: 11.5px;
+        color: var(--text-muted);
+        line-height: 1.3;
+        white-space: nowrap;
+      }
+
+      .wf-node-chat {
+        top: 34px;
+        left: 26px;
+        animation: floatNodeA 6.4s ease-in-out infinite;
+      }
+
+      .wf-node-email {
+        top: 38px;
+        right: 26px;
+        animation: floatNodeB 7s ease-in-out infinite;
+      }
+
+      .wf-node-center {
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 34px);
+        padding: 16px 20px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.94);
+        animation: floatNodeCenter 5.8s ease-in-out infinite;
+      }
+
+      .wf-node-cart {
+        bottom: 36px;
+        left: 28px;
+        animation: floatNodeB 6.8s ease-in-out infinite;
+      }
+
+      .wf-node-gear {
+        bottom: 34px;
+        right: 26px;
+        animation: floatNodeA 6.2s ease-in-out infinite;
+      }
+
+      @keyframes floatNodeA {
+        0%,
+        100% {
+          transform: translate3d(0, 0px, 16px);
+        }
+        50% {
+          transform: translate3d(0, -8px, 24px);
+        }
+      }
+
+      @keyframes floatNodeB {
+        0%,
+        100% {
+          transform: translate3d(0, 0px, 20px);
+        }
+        50% {
+          transform: translate3d(0, 7px, 12px);
+        }
+      }
+
+      @keyframes floatNodeCenter {
+        0%,
+        100% {
+          transform: translate3d(-50%, -50%, 34px);
+        }
+        50% {
+          transform: translate3d(-50%, calc(-50% - 6px), 44px);
+        }
+      }
+
+      @keyframes dashFlow {
+        from {
+          stroke-dashoffset: 90;
+        }
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      /* 2. Demo Video Section */
+      .video-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-card);
+      }
+
+      .video-frame {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+      }
+
+      .video-frame iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .video-placeholder {
+        max-width: 540px;
+        text-align: center;
+      }
+
+      .video-play-icon {
+        width: 68px;
+        height: 68px;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 1px solid rgba(99, 50, 240, 0.22);
+        color: var(--accent);
+        display: grid;
+        place-items: center;
+        box-shadow: 0 12px 28px -10px rgba(99, 50, 240, 0.28);
+      }
+
+      .video-placeholder h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .video-placeholder p {
+        font-size: 15px;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+      }
+
+      .video-placeholder-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      /* Message-Only Appointment Booking */
+      .booking-box {
+        margin-top: 32px;
+        padding: 34px;
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-card);
+      }
+
+      .booking-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 36px;
+        align-items: start;
+      }
+
+      .booking-intro h3 {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 10px;
+      }
+
+      .booking-intro p {
+        font-size: 15px;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+      }
+
+      .booking-rules {
+        display: grid;
+        gap: 10px;
+        padding-top: 18px;
+        border-top: 1px solid var(--border);
+        font-size: 14px;
+        color: var(--text-body);
+      }
+
+      .booking-rule {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .booking-rule svg {
+        color: var(--accent);
+        flex-shrink: 0;
+      }
+
+      .booking-step-label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 8px;
+      }
+
+      .channel-tabs,
+      .day-grid,
+      .slot-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+
+      .seg-btn {
+        min-height: 40px;
+        padding: 8px 14px;
+        border-radius: 9px;
+        border: 1px solid var(--border-strong);
+        background: var(--bg);
+        color: var(--text-body);
+        font-size: 13.5px;
+        font-weight: 500;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: border-color 150ms var(--ease), background-color 150ms var(--ease),
+          color 150ms var(--ease);
+      }
+
+      .seg-btn:hover {
+        border-color: var(--accent);
+        color: var(--text);
+      }
+
+      .seg-btn.active {
+        background: var(--accent-soft);
+        border-color: var(--accent);
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .booking-confirm {
+        margin-top: 16px;
+        padding: 18px 20px;
+        border-radius: var(--radius-md);
+        background: var(--success-soft);
+        border: 1px solid rgba(15, 118, 110, 0.25);
+        display: none;
+      }
+
+      .booking-confirm.show {
+        display: block;
+      }
+
+      .booking-confirm h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--success);
+        margin-bottom: 6px;
+      }
+
+      .booking-confirm p {
+        font-size: 14px;
+        color: var(--text-body);
+        margin-bottom: 14px;
+      }
+
+      .booking-confirm-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      /* 3. Problem + What We Do */
+      .problem-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 56px;
+      }
+
+      .problem-card {
+        padding: 26px;
+        border-radius: var(--radius-md);
+        background: var(--bg-soft);
+        border: 1px solid var(--border);
+      }
+
+      .problem-num {
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .problem-card h3 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .problem-card p {
+        font-size: 15px;
+        color: var(--text-muted);
+      }
+
+      .services-divider {
+        padding-top: 48px;
+        border-top: 1px solid var(--border);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .service-card {
+        padding: 28px;
+        border-radius: var(--radius-md);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        transition: border-color 180ms var(--ease), transform 180ms var(--ease);
+      }
+
+      .service-card:hover {
+        border-color: rgba(99, 50, 240, 0.35);
+        transform: translateY(-2px);
+      }
+
+      .service-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        display: grid;
+        place-items: center;
+        margin-bottom: 16px;
+      }
+
+      .service-card h3 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .service-card p {
+        font-size: 15px;
+        color: var(--text-muted);
+      }
+
+      /* 4. Packages */
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .pricing-card {
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .pricing-card.featured {
+        border-color: var(--accent);
+        box-shadow: 0 20px 40px -20px rgba(99, 50, 240, 0.25);
+      }
+
+      .pkg-kicker {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 6px;
+        min-height: 20px;
+      }
+
+      .pkg-name {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .pkg-subtitle {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-muted);
+        margin-bottom: 16px;
+      }
+
+      .pkg-price-row {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .pkg-price {
+        font-family: 'Poppins', sans-serif;
+        font-size: 38px;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1;
+      }
+
+      .pkg-price-type {
+        font-size: 13.5px;
+        color: var(--text-muted);
+      }
+
+      .pkg-desc {
+        font-size: 14.5px;
+        color: var(--text-body);
+        margin-bottom: 22px;
+        min-height: 46px;
+      }
+
+      .pkg-specs {
+        list-style: none;
+        padding: 18px 0;
+        margin: 0 0 24px;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        display: grid;
+        gap: 11px;
+        font-size: 14px;
+      }
+
+      .pkg-specs li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .spec-label {
+        color: var(--text-muted);
+      }
+
+      .spec-val {
+        font-weight: 600;
+        color: var(--text);
+        text-align: right;
+      }
+
+      .spec-val.muted {
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+
+      .pricing-card .btn {
+        margin-top: auto;
+        width: 100%;
+      }
+
+      .pricing-note {
+        margin-top: 24px;
+        font-size: 14.5px;
+        color: var(--text-muted);
+        text-align: center;
+      }
+
+      .pricing-note strong {
+        color: var(--text);
+      }
+
+      /* 5. How It Works */
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+
+      .step-card {
+        padding: 24px;
+        border-radius: var(--radius-md);
+        background: var(--surface);
+        border: 1px solid var(--border);
+      }
+
+      .step-num {
+        font-family: 'Poppins', sans-serif;
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1;
+        margin-bottom: 14px;
+      }
+
+      .step-card h3 {
+        font-size: 17px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .step-card p {
+        font-size: 14.5px;
+        color: var(--text-muted);
+      }
+
+      /* 6. Demo Projects */
+      .demos-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .demo-card {
+        display: flex;
+        flex-direction: column;
+        padding: 26px;
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .demo-tag {
+        font-size: 12.5px;
+        font-weight: 500;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+      }
+
+      .demo-card h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 14px;
+      }
+
+      /* CSS-drawn Demo Illustrations (Zero External Images) */
+      .demo-illustration {
+        height: 148px;
+        border-radius: var(--radius-md);
+        background: var(--bg-soft);
+        border: 1px solid var(--border);
+        padding: 14px;
+        margin-bottom: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+        overflow: hidden;
+      }
+
+      .mini-chat-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .mini-chat-row.right {
+        justify-content: flex-end;
+      }
+
+      .mini-bubble {
+        padding: 7px 11px;
+        border-radius: 10px;
+        font-size: 11.5px;
+        line-height: 1.3;
+        max-width: 82%;
+      }
+
+      .mini-bubble.user {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+
+      .mini-bubble.bot {
+        background: var(--accent);
+        color: #ffffff;
+      }
+
+      .mini-bubble.verify {
+        background: var(--success-soft);
+        color: var(--success);
+        border: 1px solid rgba(15, 118, 110, 0.22);
+        font-weight: 500;
+      }
+
+      .cart-timeline {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        align-items: center;
+      }
+
+      .cart-step {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        padding: 10px 8px;
+        text-align: center;
+      }
+
+      .cart-step strong {
+        display: block;
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        color: var(--accent);
+      }
+
+      .cart-step span {
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      .cart-stop-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 7px 10px;
+        border-radius: 8px;
+        background: var(--success-soft);
+        color: var(--success);
+        font-size: 11.5px;
+        font-weight: 600;
+      }
+
+      .qa-matrix {
+        display: grid;
+        gap: 7px;
+      }
+
+      .qa-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 10px;
+        border-radius: 8px;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        font-size: 11.5px;
+        color: var(--text);
+      }
+
+      .qa-row span:last-child {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .demo-desc {
+        font-size: 14.5px;
+        color: var(--text-body);
+        margin-bottom: 16px;
+      }
+
+      .demo-tools {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 14px;
+      }
+
+      .demo-result {
+        margin-top: auto;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      /* 7. Trust & Safety */
+      .trust-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .trust-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 24px;
+        border-radius: var(--radius-md);
+        background: var(--surface);
+        border: 1px solid var(--border);
+      }
+
+      .trust-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+      }
+
+      .trust-card h3 {
+        font-size: 17px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .trust-card p {
+        font-size: 14.5px;
+        color: var(--text-muted);
+      }
+
+      /* 8. Founding Client / Reviews */
+      .founding-card {
+        padding: 40px;
+        border-radius: var(--radius-lg);
+        background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%);
+        border: 1px solid rgba(99, 50, 240, 0.24);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+      }
+
+      .founding-copy {
+        max-width: 660px;
+      }
+
+      .founding-copy h2 {
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
+        margin-bottom: 10px;
+      }
+
+      .founding-copy p {
+        font-size: 16px;
+        color: var(--text-body);
+      }
+
+      .founding-sub {
+        margin-top: 10px;
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .review-card {
+        padding: 26px;
+        border-radius: var(--radius-md);
+        background: var(--surface);
+        border: 1px solid var(--border);
+      }
+
+      .review-quote {
+        font-size: 15px;
+        color: var(--text-body);
+        margin-bottom: 16px;
+      }
+
+      .review-author {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .review-role {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      /* 9. About */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 48px;
+        align-items: center;
+      }
+
+      .about-visual {
+        padding: 36px;
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-card);
+      }
+
+      .about-brand-lockup {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 24px;
+        padding-bottom: 22px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .about-brand-name {
+        font-family: 'Poppins', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.1;
+      }
+
+      .about-brand-motto {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--accent);
+        letter-spacing: 0.06em;
+        margin-top: 4px;
+      }
+
+      .about-photo {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border-radius: var(--radius-md);
+        margin-bottom: 20px;
+      }
+
+      .about-details {
+        display: grid;
+        gap: 14px;
+        font-size: 14.5px;
+      }
+
+      .about-detail-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .about-detail-row:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .about-detail-label {
+        color: var(--text-muted);
+      }
+
+      .about-detail-value {
+        font-weight: 600;
+        color: var(--text);
+        text-align: right;
+      }
+
+      .about-copy p + p {
+        margin-top: 16px;
+      }
+
+      .about-copy p {
+        font-size: 16px;
+        color: var(--text-body);
+      }
+
+      /* 10. FAQ */
+      .faq-list {
+        max-width: 820px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .faq-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+      }
+
+      .faq-trigger {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        text-align: left;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .faq-icon {
+        width: 24px;
+        height: 24px;
+        color: var(--accent);
+        flex-shrink: 0;
+        transition: transform 200ms var(--ease);
+      }
+
+      .faq-item[data-open='true'] .faq-icon {
+        transform: rotate(45deg);
+      }
+
+      .faq-panel {
+        display: none;
+        padding: 0 24px 20px;
+        font-size: 15px;
+        color: var(--text-muted);
+      }
+
+      .faq-item[data-open='true'] .faq-panel {
+        display: block;
+      }
+
+      /* 11. Contact */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 36px;
+        align-items: start;
+      }
+
+      .contact-links {
+        display: grid;
+        gap: 14px;
+      }
+
+      .contact-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 18px 20px;
+        border-radius: var(--radius-md);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        transition: border-color 160ms var(--ease), transform 160ms var(--ease);
+      }
+
+      .contact-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-1px);
+      }
+
+      .contact-card-left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        min-width: 0;
+      }
+
+      .contact-card-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+      }
+
+      .contact-card-title {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .contact-card-value {
+        font-weight: 600;
+        color: var(--text);
+        word-break: break-word;
+      }
+
+      .copy-btn {
+        background: var(--bg-soft);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 7px 12px;
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--text);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .copy-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .contact-form-card {
+        padding: 30px;
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-card);
+      }
+
+      .contact-form-card h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .contact-form-sub {
+        font-size: 14.5px;
+        color: var(--text-muted);
+        margin-bottom: 22px;
+      }
+
+      .form-grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .form-row-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .field label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 6px;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        padding: 11px 13px;
+        border-radius: 10px;
+        border: 1px solid var(--border-strong);
+        background: var(--bg);
+        font-family: inherit;
+        font-size: 14.5px;
+        color: var(--text);
+        transition: border-color 160ms var(--ease), box-shadow 160ms var(--ease);
+      }
+
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px var(--accent-soft);
+      }
+
+      .form-feedback {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        font-size: 14px;
+        display: none;
+      }
+
+      .form-feedback.show {
+        display: block;
+      }
+
+      .form-feedback.ok {
+        background: var(--success-soft);
+        color: var(--success);
+        border: 1px solid rgba(15, 118, 110, 0.25);
+      }
+
+      .form-feedback.err {
+        background: rgba(220, 38, 38, 0.08);
+        color: #b91c1c;
+        border: 1px solid rgba(220, 38, 38, 0.22);
+      }
+
+      /* Footer */
+      .site-footer {
+        border-top: 1px solid var(--border);
+        padding: 36px 0;
+        background: var(--bg);
+      }
+
+      .footer-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .footer-brand {
+        max-width: 540px;
+      }
+
+      .footer-tagline {
+        margin-top: 10px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        color: var(--accent);
+      }
+
+      .footer-brand p {
+        margin-top: 8px;
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      .footer-links a:hover {
+        color: var(--text);
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .hero-grid,
+        .about-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .pricing-grid,
+        .demos-grid,
+        .problem-grid,
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .steps-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .founding-card {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .booking-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .main-nav,
+        .header-cta {
+          display: none;
+        }
+
+        .mobile-toggle {
+          display: inline-flex;
+        }
+
+        .header-inner {
+          min-height: 64px;
+          padding: 16px 0;
+        }
+
+        .brand-mark {
+          height: 32px;
+        }
+
+        .hero-bg-logo {
+          width: 300px;
+          right: -40px;
+          opacity: 0.06;
+        }
+
+        .section {
+          padding: 64px 0;
+        }
+
+        .hero {
+          padding: 44px 0 56px;
+        }
+
+        .workflow-stage {
+          height: 360px;
+        }
+
+        .wf-node {
+          padding: 10px 12px;
+          gap: 9px;
+        }
+
+        .wf-icon {
+          width: 32px;
+          height: 32px;
+        }
+
+        .wf-node-center .wf-icon {
+          width: 36px;
+          height: 36px;
+        }
+
+        .wf-label {
+          font-size: 12px;
+        }
+
+        .wf-sub {
+          display: none;
+        }
+
+        .steps-grid,
+        .trust-grid,
+        .form-row-2 {
+          grid-template-columns: 1fr;
+        }
+
+        .founding-card {
+          padding: 28px 22px;
+        }
+
+        .booking-box {
+          padding: 22px 18px;
+        }
+      }
+
+      /* Reduced Motion Support */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .workflow-stage {
+          transform: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Navigation (3-Zone Contract) -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#top" class="brand-link" aria-label="Autoverse home">
+          <img
+            class="brand-mark"
+            src="/assets/aistudio/Autoverse_logo_icon_design_e18586a8_0221d1e1.jpg"
+            alt="Autoverse logo"
+          />
+          <span data-bind="brandName">Autoverse</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#packages" class="nav-link">Packages</a>
+          <a href="#demos" class="nav-link">Demos</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#faq" class="nav-link">FAQ</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="#contact" class="btn btn-primary header-cta">Get Free Demo</a>
+          <button
+            type="button"
+            class="mobile-toggle"
+            id="mobileMenuBtn"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileDrawer"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-drawer" id="mobileDrawer">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#packages" class="nav-link">Packages</a>
+        <a href="#demos" class="nav-link">Demos</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#contact" class="btn btn-primary" style="margin-top: 8px">Get Free Demo</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- 1. Hero -->
+      <section class="hero">
+        <img
+          class="hero-bg-logo"
+          src="/assets/aistudio/Autoverse_logo_icon_design_e18586a8_0221d1e1.jpg"
+          alt="Autoverse logo"
+          aria-hidden="true"
+        />
+        <div class="container hero-grid">
+          <div>
+            <div class="hero-meta">
+              <span class="hero-meta-brand" data-bind="brandName">Autoverse</span>
+              <span aria-hidden="true">·</span>
+              <span data-bind="tagline">AI Automation for Online Stores</span>
+              <span aria-hidden="true">·</span>
+              <span data-bind="founderName">Md Mikatur Rahman</span>
+            </div>
+
+            <h1 class="hero-title" data-bind="heroHeadline">
+              Automate the busywork. Scale your brand.
+            </h1>
+
+            <p class="hero-sub" data-bind="heroSubline">
+              Autoverse builds AI chatbots and automation workflows that help e-commerce brands answer customers faster, recover more sales, and save hours every week.
+            </p>
+
+            <div class="hero-ctas">
+              <a href="#contact" class="btn btn-primary btn-lg" data-select-pkg="Free Demo">
+                Get a free demo for your store
+              </a>
+              <a href="#demo-video" class="btn btn-secondary btn-lg">Watch the demo</a>
+            </div>
+
+            <div class="hero-facts">
+              <span><strong>24/7</strong> customer replies &amp; cart recovery</span>
+              <span aria-hidden="true">·</span>
+              <span><strong>Shopify, WhatsApp &amp; Email</strong> ready</span>
+              <span aria-hidden="true">·</span>
+              <span><strong>2–7 days</strong> typical delivery</span>
+            </div>
+          </div>
+
+          <!-- CSS 3D Frosted-Glass Workflow Nodes -->
+          <div class="workflow-stage-wrap">
+            <div class="workflow-stage" id="workflowStage" aria-label="Interactive 3D workflow architecture diagram">
+              <div class="workflow-grid-bg"></div>
+              <svg class="workflow-lines" viewBox="0 0 500 430" preserveAspectRatio="none" aria-hidden="true">
+                <path class="flow-line" d="M 110 85 C 175 110, 200 170, 250 215" />
+                <path class="flow-pulse" d="M 110 85 C 175 110, 200 170, 250 215" />
+
+                <path class="flow-line" d="M 390 85 C 325 110, 300 170, 250 215" />
+                <path class="flow-pulse flow-pulse-delay" d="M 390 85 C 325 110, 300 170, 250 215" />
+
+                <path class="flow-line" d="M 110 345 C 175 315, 200 260, 250 215" />
+                <path class="flow-pulse flow-pulse-delay" d="M 110 345 C 175 315, 200 260, 250 215" />
+
+                <path class="flow-line" d="M 390 345 C 325 315, 300 260, 250 215" />
+                <path class="flow-pulse" d="M 390 345 C 325 315, 300 260, 250 215" />
+              </svg>
+
+              <!-- Node 1: Chat Bubble -->
+              <div class="wf-node wf-node-chat">
+                <div class="wf-icon" aria-hidden="true">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="wf-label">Customer Chat</div>
+                  <div class="wf-sub">Instant FAQ &amp; shipping</div>
+                </div>
+              </div>
+
+              <!-- Node 2: Email -->
+              <div class="wf-node wf-node-email">
+                <div class="wf-icon" aria-hidden="true">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="wf-label">Email &amp; WhatsApp</div>
+                  <div class="wf-sub">Verified order updates</div>
+                </div>
+              </div>
+
+              <!-- Center Node: Robot Assistant -->
+              <div class="wf-node wf-node-center">
+                <div class="wf-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="8" width="18" height="12" rx="3" />
+                    <path d="M12 2v6M8 14h.01M16 14h.01" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="wf-label">AI Store Assistant</div>
+                  <div class="wf-sub">24/7 answers + safe handover</div>
+                </div>
+              </div>
+
+              <!-- Node 4: Shopping Cart -->
+              <div class="wf-node wf-node-cart">
+                <div class="wf-icon" aria-hidden="true">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="8" cy="21" r="1" />
+                    <circle cx="19" cy="21" r="1" />
+                    <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="wf-label">Abandoned Cart</div>
+                  <div class="wf-sub">3-step smart follow-up</div>
+                </div>
+              </div>
+
+              <!-- Node 5: Gear -->
+              <div class="wf-node wf-node-gear">
+                <div class="wf-icon" aria-hidden="true">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="wf-label">n8n Store Sync</div>
+                  <div class="wf-sub">CRM, Sheets &amp; Shopify</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Demo Video Area -->
+      <section class="section section-soft" id="demo-video">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Live Walkthrough</span>
+            <h2 class="section-title">See how the automation works before you buy</h2>
+            <p class="section-lead">
+              Watch our assistant answer store questions, verify customer emails for order lookups, and route tricky questions to a human.
+            </p>
+          </div>
+
+          <div class="video-card">
+            <div class="video-frame" id="videoContainer">
+              <div class="video-placeholder">
+                <div class="video-play-icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5.14v14l11-7-11-7z" />
+                  </svg>
+                </div>
+                <h3>Demo walkthrough video coming soon</h3>
+                <p>
+                  We are recording a full walkthrough of our Shopify test-store workflows. Want to see how it fits your store first?
+                </p>
+                <div class="video-placeholder-actions">
+                  <a href="#book-appointment" class="btn btn-primary">Book a Message Appointment</a>
+                  <a href="#demos" class="btn btn-secondary">View Demo Projects</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Message-Only Appointment Booking System (No Calls) -->
+          <div class="booking-box" id="book-appointment">
+            <div class="booking-grid">
+              <div class="booking-intro">
+                <span class="kicker">Message-Only Appointment · No Calls</span>
+                <h3>Book a chat appointment after watching the demo</h3>
+                <p>
+                  Prefer text over phone or video calls? Reserve a dedicated message slot and we will chat directly on your preferred platform—clear, fast, and zero call pressure.
+                </p>
+                <div class="booking-rules">
+                  <div class="booking-rule">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    </svg>
+                    <span>100% text &amp; message based — no audio or video calls</span>
+                  </div>
+                  <div class="booking-rule">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    <span>Available daily 10:00 AM – 11:00 PM BST (GMT+6)</span>
+                  </div>
+                  <div class="booking-rule">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                    <span>Get a custom workflow outline for your store in chat</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <form id="messageBookingForm" novalidate>
+                  <span class="booking-step-label">1. Choose messaging channel</span>
+                  <div class="channel-tabs" id="bookingChannels" role="group" aria-label="Messaging channel"></div>
+
+                  <span class="booking-step-label">2. Pick a date</span>
+                  <div class="day-grid" id="bookingDays" role="group" aria-label="Appointment date"></div>
+
+                  <span class="booking-step-label">3. Pick a message window (GMT+6 / BST)</span>
+                  <div class="slot-grid" id="bookingSlots" role="group" aria-label="Appointment time window"></div>
+
+                  <div class="form-grid">
+                    <div class="form-row-2">
+                      <div class="field">
+                        <label for="bookName">Your name</label>
+                        <input id="bookName" type="text" placeholder="Alex Morgan" required />
+                      </div>
+                      <div class="field">
+                        <label for="bookHandle">Your email or chat handle</label>
+                        <input id="bookHandle" type="text" placeholder="alex@store.com or @handle" required />
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label for="bookTopic">Store link &amp; quick message (optional)</label>
+                      <input
+                        id="bookTopic"
+                        type="text"
+                        placeholder="yourstore.com — interested in support bot + cart recovery"
+                      />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg">
+                      Book Message Appointment
+                    </button>
+                  </div>
+                </form>
+
+                <div id="bookingError" class="form-feedback err" role="alert"></div>
+
+                <div id="bookingConfirm" class="booking-confirm" role="status" aria-live="polite">
+                  <h4>Message appointment ready to send</h4>
+                  <p id="bookingSummaryText"></p>
+                  <div class="booking-confirm-actions">
+                    <a id="bookingSendLink" href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                      Open Channel to Confirm
+                    </a>
+                    <button type="button" id="copyBookingBtn" class="btn btn-secondary">
+                      Copy Booking Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. The Problem & What We Do -->
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Why Stores Lose Time &amp; Sales</span>
+            <h2 class="section-title">Manual support slows your store down</h2>
+            <p class="section-lead">
+              Most online stores lose hours and ready-to-buy shoppers to the same three daily bottlenecks.
+            </p>
+          </div>
+
+          <div class="problem-grid">
+            <article class="problem-card">
+              <span class="problem-num">01</span>
+              <h3>Repeated customer questions</h3>
+              <p>
+                "Where is my order?", "How long is shipping?", and sizing questions flood your inbox every day and pull you away from growth.
+              </p>
+            </article>
+
+            <article class="problem-card">
+              <span class="problem-num">02</span>
+              <h3>Slow replies lose buyers</h3>
+              <p>
+                Shoppers who wait hours for a simple answer while browsing at night usually close the tab and buy somewhere else.
+              </p>
+            </article>
+
+            <article class="problem-card">
+              <span class="problem-num">03</span>
+              <h3>Abandoned carts go cold</h3>
+              <p>
+                Interested visitors leave items in their cart without a timely, helpful follow-up across email or WhatsApp.
+              </p>
+            </article>
+          </div>
+
+          <div class="services-divider">
+            <div class="section-head" style="margin-bottom: 32px">
+              <span class="kicker">What We Do</span>
+              <h2 class="section-title">Practical AI workflows built around your store</h2>
+            </div>
+
+            <div class="services-grid">
+              <article class="service-card">
+                <div class="service-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                </div>
+                <h3>AI Chatbots</h3>
+                <p>Answer product questions and order status instantly, 24/7.</p>
+              </article>
+
+              <article class="service-card">
+                <div class="service-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                  </svg>
+                </div>
+                <h3>Sales Automation</h3>
+                <p>Recover abandoned carts and follow up with leads automatically.</p>
+              </article>
+
+              <article class="service-card">
+                <div class="service-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                  </svg>
+                </div>
+                <h3>Workflow Automation</h3>
+                <p>Connect your store, CRM, and inbox so the boring tasks run themselves.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Packages -->
+      <section class="section section-soft" id="packages">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Packages &amp; Pricing</span>
+            <h2 class="section-title">Clear setup packages for any store stage</h2>
+            <p class="section-lead">
+              Start with a single automated task or launch an end-to-end AI support and Shopify sync system.
+            </p>
+          </div>
+
+          <div class="pricing-grid" id="pricingGrid">
+            <!-- Rendered from SITE_CONFIG.packages -->
+          </div>
+
+          <p class="pricing-note">
+            <strong>Pricing note:</strong> All packages are one-time setup prices.
+            <span data-bind="monthlyNote">Optional monthly support available on request.</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- 5. How It Works -->
+      <section class="section" id="process">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">How It Works</span>
+            <h2 class="section-title">From store details to live automation in 4 steps</h2>
+            <p class="section-lead">
+              No complicated setup calls or technical jargon. You share how your store works, and we handle the build and testing.
+            </p>
+          </div>
+
+          <div class="steps-grid">
+            <article class="step-card">
+              <div class="step-num tabular-nums">01</div>
+              <h3>Share store info</h3>
+              <p>Send us your product info, shipping and return rules, FAQs, and the channels you use.</p>
+            </article>
+
+            <article class="step-card">
+              <div class="step-num tabular-nums">02</div>
+              <h3>We build and test</h3>
+              <p>We connect your workflows in n8n and test replies, order checks, and edge cases thoroughly.</p>
+            </article>
+
+            <article class="step-card">
+              <div class="step-num tabular-nums">03</div>
+              <h3>You review</h3>
+              <p>Test the assistant yourself, check the tone, and ask for revisions until everything feels right.</p>
+            </article>
+
+            <article class="step-card">
+              <div class="step-num tabular-nums">04</div>
+              <h3>Goes live + support</h3>
+              <p>Your automation goes live on your store, with optional monthly support and reporting on request.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Demo Projects -->
+      <section class="section section-soft" id="demos">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Demo Projects</span>
+            <h2 class="section-title">Built and tested on a real Shopify test store</h2>
+            <p class="section-lead">
+              Every project below is an honest test-store build showing exact tools used and real test results.
+            </p>
+          </div>
+
+          <div class="demos-grid">
+            <!-- Demo 1 -->
+            <article class="demo-card">
+              <div class="demo-tag">Demo project · Built on a test store</div>
+              <h3>AI Support Assistant</h3>
+              <div class="demo-illustration" aria-hidden="true">
+                <div class="mini-chat-row right">
+                  <div class="mini-bubble user">Where is order #1042?</div>
+                </div>
+                <div class="mini-chat-row">
+                  <div class="mini-bubble verify">Email verified · Shipped via DHL</div>
+                </div>
+                <div class="mini-chat-row">
+                  <div class="mini-bubble bot">If you need a human agent, reply "Agent".</div>
+                </div>
+              </div>
+              <p class="demo-desc">
+                Answers product, shipping, and return questions directly from the store's own information. Checks order status only when the customer's email matches the order, and hands over to a human when unsure.
+              </p>
+              <div class="demo-tools">Tools: n8n · AI model · Shopify test store</div>
+              <div class="demo-result tabular-nums">
+                Passed <span data-bind="supportPassed">17</span>/20 quality-check questions
+              </div>
+            </article>
+
+            <!-- Demo 2 -->
+            <article class="demo-card">
+              <div class="demo-tag">Demo project · Built on a test store</div>
+              <h3>Abandoned Cart Recovery Flow</h3>
+              <div class="demo-illustration" aria-hidden="true">
+                <div class="cart-timeline">
+                  <div class="cart-step">
+                    <strong>1 hr</strong>
+                    <span>Check-in</span>
+                  </div>
+                  <div class="cart-step">
+                    <strong>24 hrs</strong>
+                    <span>Help FAQ</span>
+                  </div>
+                  <div class="cart-step">
+                    <strong>3 days</strong>
+                    <span>Final nudge</span>
+                  </div>
+                </div>
+                <div class="cart-stop-bar">
+                  <span>Order placed?</span>
+                  <span>Auto-stops &amp; logs to Sheet</span>
+                </div>
+              </div>
+              <p class="demo-desc">
+                Runs a 3-step reminder sequence (1 hour, 24 hours, 3 days) that stops automatically the moment a customer completes their purchase. Every run records cleanly in a log sheet for monthly reports.
+              </p>
+              <div class="demo-tools">Tools: n8n · Email &amp; WhatsApp sequence · Log sheet</div>
+              <div class="demo-result">Tested end to end on a test store</div>
+            </article>
+
+            <!-- Demo 3 -->
+            <article class="demo-card">
+              <div class="demo-tag">Demo project · Built on a test store</div>
+              <h3>Quality and Safety Checklist</h3>
+              <div class="demo-illustration" aria-hidden="true">
+                <div class="qa-matrix">
+                  <div class="qa-row">
+                    <span>Normal &amp; Order Lookups</span>
+                    <span>Email match check</span>
+                  </div>
+                  <div class="qa-row">
+                    <span>Rule-Breaking &amp; Unknowns</span>
+                    <span>Safe refusal</span>
+                  </div>
+                  <div class="qa-row">
+                    <span>Angry Customers</span>
+                    <span>Human handover</span>
+                  </div>
+                </div>
+              </div>
+              <p class="demo-desc">
+                A 20-question test plan run before delivery covering normal questions, verified order lookups, rule-breaking attempts, unknown topics, and angry customers. Designed to catch risky edge cases before launch.
+              </p>
+              <div class="demo-tools">Tools: 20-case test sheet · Safety rules · Handover trigger</div>
+              <div class="demo-result tabular-nums">
+                Baseline verified: <span data-bind="supportPassed">17</span>/20 on test build
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Trust & Safety -->
+      <section class="section" id="safety">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Trust &amp; Safety</span>
+            <h2 class="section-title">Guardrails built into every workflow</h2>
+            <p class="section-lead">
+              AI for e-commerce only helps when it stays accurate, protects customer privacy, and knows when to step aside.
+            </p>
+          </div>
+
+          <div class="trust-grid">
+            <article class="trust-card">
+              <div class="trust-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+              </div>
+              <div>
+                <h3>Verified order lookup</h3>
+                <p>Order status and tracking details are only retrieved when the customer's email matches the order on file.</p>
+              </div>
+            </article>
+
+            <article class="trust-card">
+              <div class="trust-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <div>
+                <h3>Human handover</h3>
+                <p>When a question is complex, urgent, or sensitive, the conversation immediately escalates to you or your support team.</p>
+              </div>
+            </article>
+
+            <article class="trust-card">
+              <div class="trust-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <path d="M14 2v6h6M9 15l2 2 4-4" />
+                </svg>
+              </div>
+              <div>
+                <h3>No invented answers</h3>
+                <p>Replies are grounded strictly in your store's own product catalog, shipping timelines, and return policies.</p>
+              </div>
+            </article>
+
+            <article class="trust-card">
+              <div class="trust-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+              </div>
+              <div>
+                <h3>Tested before delivery</h3>
+                <p>Every assistant is stress-tested against our 20-question quality and safety checklist before going live.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Reviews / Founding Client -->
+      <section class="section section-soft" id="reviews">
+        <div class="container" id="reviewsContainer">
+          <!-- Rendered from SITE_CONFIG.reviews (shows Founding Client card when empty) -->
+        </div>
+      </section>
+
+      <!-- 9. About -->
+      <section class="section" id="about">
+        <div class="container about-grid">
+          <div class="about-visual">
+            <div id="aboutMediaSlot">
+              <div class="about-brand-lockup">
+                <img
+                  class="brand-mark"
+                  src="/assets/aistudio/Autoverse_logo_icon_design_e18586a8_0221d1e1.jpg"
+                  alt="Autoverse logo"
+                />
+                <div>
+                  <div class="about-brand-name" data-bind="brandName">Autoverse</div>
+                  <div class="about-brand-motto">AUTOMATE. SCALE. GROW.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-details">
+              <div class="about-detail-row">
+                <span class="about-detail-label">Founder</span>
+                <span class="about-detail-value" data-bind="founderName">Md Mikatur Rahman</span>
+              </div>
+              <div class="about-detail-row">
+                <span class="about-detail-label">Serving</span>
+                <span class="about-detail-value" data-bind="targetMarket">E-commerce brands worldwide</span>
+              </div>
+              <div class="about-detail-row">
+                <span class="about-detail-label">Time zone</span>
+                <span class="about-detail-value" data-bind="timezone">GMT+6 (Bangladesh Standard Time)</span>
+              </div>
+              <div class="about-detail-row">
+                <span class="about-detail-label">Working hours</span>
+                <span class="about-detail-value" data-bind="workingHours">10:00 AM – 11:00 PM BST</span>
+              </div>
+              <div class="about-detail-row">
+                <span class="about-detail-label">Languages</span>
+                <span class="about-detail-value" data-bind="languages">English, Bengali</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-copy">
+            <span class="kicker">About Autoverse</span>
+            <h2 class="section-title">Simple, custom automation without the tech headache</h2>
+            <p data-bind="aboutParagraph1">
+              Autoverse is an AI automation agency for e-commerce brands. We design and build AI agents and workflows that handle customer support, order updates, cart recovery, and repetitive operations, so you can focus on growing your brand.
+            </p>
+            <p data-bind="aboutParagraph2">
+              Every system is custom-built, simple to use, and designed to connect with the tools you already run, like Shopify, WhatsApp, Instagram, and email. No tech headache, just a smarter store that works around the clock.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. FAQ -->
+      <section class="section section-soft" id="faq">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">FAQ</span>
+            <h2 class="section-title">Common questions before getting started</h2>
+          </div>
+
+          <div class="faq-list" id="faqList">
+            <div class="faq-item" data-open="true">
+              <button type="button" class="faq-trigger" aria-expanded="true">
+                <span>How long does it take to build and deliver?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 5v14M5 12h14" stroke-linecap="round" />
+                </svg>
+              </button>
+              <div class="faq-panel">
+                Basic single-flow setups take 2 days, Standard AI workflows take 4 days, and Premium end-to-end store automations take 7 days once we receive your store information.
+              </div>
+            </div>
+
+            <div class="faq-item" data-open="false">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>What do you need from me to start?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 5v14M5 12h14" stroke-linecap="round" />
+                </svg>
+              </button>
+              <div class="faq-panel">
+                Just your store policies (shipping, returns, FAQs), a list of the tools you want connected, and access or API credentials when we are ready to connect your live workflow.
+              </div>
+            </div>
+
+            <div class="faq-item" data-open="false">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Is my store and customer data safe?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 5v14M5 12h14" stroke-linecap="round" />
+                </svg>
+              </button>
+              <div class="faq-panel">
+                Yes. Order lookups only return order details when the customer's email matches the order record, and workflows run using your own accounts and permissions.
+              </div>
+            </div>
+
+            <div class="faq-item" data-open="false">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>What happens if the AI bot doesn't know an answer?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 5v14M5 12h14" stroke-linecap="round" />
+                </svg>
+              </button>
+              <div class="faq-panel">
+                It never guesses or invents store policies. If a question is outside your approved store info or a customer asks for a person, it hands the chat straight over to your human team.
+              </div>
+            </div>
+
+            <div class="faq-item" data-open="false">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span>Which platforms and tools do you connect?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 5v14M5 12h14" stroke-linecap="round" />
+                </svg>
+              </button>
+              <div class="faq-panel">
+                We build on n8n and integrate Shopify, WooCommerce, WhatsApp, Instagram, Gmail/email, Google Sheets, and popular CRMs.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. Contact -->
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="section-head">
+            <span class="kicker">Contact</span>
+            <h2 class="section-title">Ready to automate your store?</h2>
+            <p class="section-lead">
+              Reach out directly on Email, Fiverr, or LinkedIn — or send your store details below for a free demo idea.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-links" id="contactLinks">
+              <!-- Rendered from SITE_CONFIG.contacts -->
+            </div>
+
+            <div class="contact-form-card">
+              <h3>Request a free store demo</h3>
+              <p class="contact-form-sub">
+                Tell us which package you're considering and share your store link. This opens your email client with everything pre-filled.
+              </p>
+
+              <form id="demoRequestForm" class="form-grid" novalidate>
+                <div class="form-row-2">
+                  <div class="field">
+                    <label for="leadName">Your name</label>
+                    <input id="leadName" name="name" type="text" placeholder="Alex Morgan" required />
+                  </div>
+                  <div class="field">
+                    <label for="leadEmail">Your email</label>
+                    <input id="leadEmail" name="email" type="email" placeholder="alex@yourstore.com" required />
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="field">
+                    <label for="leadStore">Store URL (optional)</label>
+                    <input id="leadStore" name="store" type="text" placeholder="yourstore.com" />
+                  </div>
+                  <div class="field">
+                    <label for="leadPackage">Interested in</label>
+                    <select id="leadPackage" name="package">
+                      <option value="Free Demo">Free Demo for My Store</option>
+                      <option value="Basic ($20)">Basic — Single Flow Setup ($20)</option>
+                      <option value="Standard ($50)">Standard — Smart AI Workflow ($50)</option>
+                      <option value="Premium ($100)">Premium — Complete Automation ($100)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="leadMessage">What would you like to automate?</label>
+                  <textarea
+                    id="leadMessage"
+                    name="message"
+                    rows="3"
+                    placeholder="Customer FAQ replies, Shopify order lookups, abandoned cart messages..."
+                    required
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg">Send Demo Request</button>
+              </form>
+
+              <div id="formFeedback" class="form-feedback" role="status" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <a href="#top" class="brand-link" aria-label="Autoverse home">
+            <img
+              class="brand-mark"
+              src="/assets/aistudio/Autoverse_logo_icon_design_e18586a8_0221d1e1.jpg"
+              alt="Autoverse logo"
+            />
+            <span data-bind="brandName">Autoverse</span>
+          </a>
+          <div class="footer-tagline">Automate. Scale. Grow.</div>
+          <p data-bind="footerOneLiner">
+            Autoverse: AI automation and chatbots for e-commerce brands that want to save time and scale smarter.
+          </p>
+        </div>
+
+        <nav class="footer-links" aria-label="Footer links">
+          <a href="#services">Services</a>
+          <a href="#packages">Packages</a>
+          <a href="#demos">Demo Projects</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      /* =====================================================================
+         EDITABLE SITE CONTENT — Update your brand text, prices, links,
+         demo test scores, video URL, and real client reviews right here.
+         ===================================================================== */
+      const SITE_CONFIG = {
+        brandName: 'Autoverse',
+        tagline: 'AI Automation for Online Stores',
+        founderName: 'Md Mikatur Rahman',
+        heroHeadline: 'Automate the busywork. Scale your brand.',
+        heroSubline:
+          'Autoverse builds AI chatbots and automation workflows that help e-commerce brands answer customers faster, recover more sales, and save hours every week.',
+        footerOneLiner:
+          'Autoverse: AI automation and chatbots for e-commerce brands that want to save time and scale smarter.',
+
+        /* Demo Video: Paste a YouTube, Vimeo, or Loom embed URL when ready (e.g. "https://www.youtube.com/embed/VIDEO_ID"). Leave "" for placeholder. */
+        demoVideoUrl: '',
+
+        /* Message-Only Appointment Time Windows (No Calls) */
+        bookingTimeSlots: [
+          '10:00 AM – 1:00 PM BST',
+          '2:00 PM – 5:00 PM BST',
+          '6:00 PM – 9:00 PM BST',
+          '9:00 PM – 11:00 PM BST'
+        ],
+
+        /* About & Operations */
+        targetMarket: 'E-commerce brands worldwide',
+        timezone: 'GMT+6 (Bangladesh Standard Time)',
+        workingHours: '10:00 AM – 11:00 PM BST (Global Overlap)',
+        languages: 'English, Bengali',
+        photoUrl: '', // Optional: add a local or hosted headshot URL later
+        aboutParagraph1:
+          'Autoverse is an AI automation agency for e-commerce brands. We design and build AI agents and workflows that handle customer support, order updates, cart recovery, and repetitive operations, so you can focus on growing your brand.',
+        aboutParagraph2:
+          'Every system is custom-built, simple to use, and designed to connect with the tools you already run, like Shopify, WhatsApp, Instagram, and email. No tech headache, just a smarter store that works around the clock.',
+
+        /* Packages (One-time setup prices) */
+        monthlyNote: 'Optional monthly support available on request.',
+        packages: [
+          {
+            id: 'Basic ($20)',
+            kicker: 'Starter',
+            name: 'Basic',
+            subtitle: 'SINGLE FLOW SETUP',
+            price: '$20',
+            priceType: 'one-time setup',
+            description:
+              'One n8n workflow to automate a task, like order alerts or lead capture to Sheets.',
+            delivery: '2 days',
+            featured: false,
+            specs: [
+              { label: 'Data Syncing', value: 'Included', ok: true },
+              { label: 'Conditional Logic', value: 'Included', ok: true },
+              { label: 'AI Model Integration', value: 'Not included', ok: false },
+              { label: 'APIs Integrated', value: '2', ok: true },
+              { label: 'Triggers / Actions', value: '3', ok: true },
+              { label: 'Platforms / Tools', value: '3', ok: true },
+              { label: 'Revisions', value: '2', ok: true },
+              { label: 'Delivery Time', value: '2 days', ok: true }
+            ]
+          },
+          {
+            id: 'Standard ($50)',
+            kicker: 'Most Popular',
+            name: 'Standard',
+            subtitle: 'SMART AI WORKFLOW',
+            price: '$50',
+            priceType: 'one-time setup',
+            description:
+              'AI-powered n8n workflow with WhatsApp, email or CRM, plus a short setup guide.',
+            delivery: '4 days',
+            featured: true,
+            specs: [
+              { label: 'Data Syncing', value: 'Included', ok: true },
+              { label: 'Conditional Logic', value: 'Included', ok: true },
+              { label: 'AI Model Integration', value: 'Included', ok: true },
+              { label: 'APIs Integrated', value: '4', ok: true },
+              { label: 'Triggers / Actions', value: '8', ok: true },
+              { label: 'Platforms / Tools', value: '4', ok: true },
+              { label: 'Revisions', value: 'Unlimited', ok: true },
+              { label: 'Delivery Time', value: '4 days', ok: true }
+            ]
+          },
+          {
+            id: 'Premium ($100)',
+            kicker: 'Full Store System',
+            name: 'Premium',
+            subtitle: 'COMPLETE BUSINESS AUTOMATION',
+            price: '$100',
+            priceType: 'one-time setup',
+            description:
+              'End-to-end automation with AI agent, WhatsApp, Shopify sync, and 14 days of support.',
+            delivery: '7 days',
+            featured: false,
+            specs: [
+              { label: 'Data Syncing', value: 'Included', ok: true },
+              { label: 'Conditional Logic', value: 'Included', ok: true },
+              { label: 'AI Model Integration', value: 'Included', ok: true },
+              { label: 'APIs Integrated', value: '7', ok: true },
+              { label: 'Triggers / Actions', value: '15', ok: true },
+              { label: 'Platforms / Tools', value: '6', ok: true },
+              { label: 'Revisions', value: 'Unlimited', ok: true },
+              { label: 'Delivery Time', value: '7 days', ok: true }
+            ]
+          }
+        ],
+
+        /* Demo Project Real Test Score */
+        supportPassed: 17,
+
+        /* Real Client Reviews: Keep [] to show the honest Founding Client card.
+           When you get real reviews, add objects like:
+           { quote: "...", author: "Name", role: "Store Owner, Brand" } */
+        reviews: [],
+        foundingClientHeading: 'Founding Client Opportunity',
+        foundingClientText:
+          'Be one of our first clients and get early-client pricing and priority support.',
+        foundingClientNote:
+          'We do not publish fake reviews or borrowed logos. Early clients get direct, hands-on setup in exchange for honest feedback.',
+
+        /* Contact & Social Links (Leave whatsapp / instagram empty "" until ready) */
+        contacts: {
+          email: 'mdmikaturrahman@gmail.com',
+          fiverr: 'https://www.fiverr.com/s/zArEKgK',
+          linkedin: 'https://www.linkedin.com/in/md-mikatur-rahman-a6b546434',
+          whatsapp: '', // Example later: 'https://wa.me/8801XXXXXXXXX'
+          instagram: '' // Example later: 'https://instagram.com/yourhandle'
+        }
+      };
+
+      /* =====================================================================
+         APPLICATION LOGIC
+         ===================================================================== */
+      (function initAutoverse() {
+        // 1. Bind simple text fields from SITE_CONFIG
+        document.querySelectorAll('[data-bind]').forEach((el) => {
+          const key = el.getAttribute('data-bind');
+          if (key && SITE_CONFIG[key] !== undefined) {
+            el.textContent = String(SITE_CONFIG[key]);
+          }
+        });
+
+        // 2. Render Demo Video Embed if demoVideoUrl is set
+        const videoContainer = document.getElementById('videoContainer');
+        if (videoContainer && SITE_CONFIG.demoVideoUrl.trim()) {
+          const iframe = document.createElement('iframe');
+          iframe.src = SITE_CONFIG.demoVideoUrl.trim();
+          iframe.title = SITE_CONFIG.brandName + ' demo walkthrough';
+          iframe.allow =
+            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+          iframe.allowFullscreen = true;
+          videoContainer.innerHTML = '';
+          videoContainer.appendChild(iframe);
+        }
+
+        // 3. Render Packages
+        const pricingGrid = document.getElementById('pricingGrid');
+        if (pricingGrid) {
+          pricingGrid.innerHTML = SITE_CONFIG.packages
+            .map((pkg) => {
+              const specsHtml = pkg.specs
+                .map(
+                  (spec) => `
+                  <li>
+                    <span class="spec-label">${spec.label}</span>
+                    <span class="spec-val tabular-nums ${spec.ok ? '' : 'muted'}">${spec.value}</span>
+                  </li>`
+                )
+                .join('');
+
+              return `
+                <article class="pricing-card ${pkg.featured ? 'featured' : ''}">
+                  <div class="pkg-kicker">${pkg.kicker}</div>
+                  <h3 class="pkg-name">${pkg.name}</h3>
+                  <div class="pkg-subtitle">${pkg.subtitle}</div>
+                  <div class="pkg-price-row">
+                    <span class="pkg-price tabular-nums">${pkg.price}</span>
+                    <span class="pkg-price-type">${pkg.priceType}</span>
+                  </div>
+                  <p class="pkg-desc">${pkg.description}</p>
+                  <ul class="pkg-specs">${specsHtml}</ul>
+                  <a
+                    href="#contact"
+                    class="btn ${pkg.featured ? 'btn-primary' : 'btn-secondary'}"
+                    data-select-pkg="${pkg.id}"
+                  >
+                    Select ${pkg.name}
+                  </a>
+                </article>`;
+            })
+            .join('');
+        }
+
+        // 4. Render Reviews OR Honest Founding Client Card
+        const reviewsContainer = document.getElementById('reviewsContainer');
+        if (reviewsContainer) {
+          if (Array.isArray(SITE_CONFIG.reviews) && SITE_CONFIG.reviews.length > 0) {
+            reviewsContainer.innerHTML = `
+              <div class="section-head">
+                <span class="kicker">Client Feedback</span>
+                <h2 class="section-title">What store owners say</h2>
+              </div>
+              <div class="reviews-grid">
+                ${SITE_CONFIG.reviews
+                  .map(
+                    (rev) => `
+                    <article class="review-card">
+                      <p class="review-quote">"${rev.quote}"</p>
+                      <div class="review-author">${rev.author}</div>
+                      <div class="review-role">${rev.role}</div>
+                    </article>`
+                  )
+                  .join('')}
+              </div>`;
+          } else {
+            reviewsContainer.innerHTML = `
+              <div class="founding-card">
+                <div class="founding-copy">
+                  <span class="kicker">Founding Client</span>
+                  <h2>${SITE_CONFIG.foundingClientHeading}</h2>
+                  <p>${SITE_CONFIG.foundingClientText}</p>
+                  <p class="founding-sub">${SITE_CONFIG.foundingClientNote}</p>
+                </div>
+                <a href="#contact" class="btn btn-primary btn-lg" data-select-pkg="Free Demo">
+                  Claim Early-Client Spot
+                </a>
+              </div>`;
+          }
+        }
+
+        // 5. Optional Profile Photo in About Section
+        const aboutMediaSlot = document.getElementById('aboutMediaSlot');
+        if (aboutMediaSlot && SITE_CONFIG.photoUrl.trim()) {
+          const img = document.createElement('img');
+          img.src = SITE_CONFIG.photoUrl.trim();
+          img.alt = SITE_CONFIG.founderName;
+          img.className = 'about-photo';
+          aboutMediaSlot.prepend(img);
+        }
+
+        // 6. Render Active Contact Links
+        const contactLinks = document.getElementById('contactLinks');
+        if (contactLinks) {
+          const c = SITE_CONFIG.contacts;
+          const items = [];
+
+          if (c.email) {
+            items.push(`
+              <div class="contact-card">
+                <a href="mailto:${c.email}" class="contact-card-left">
+                  <div class="contact-card-icon" aria-hidden="true">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="4" width="20" height="16" rx="2" />
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="contact-card-title">Email</div>
+                    <div class="contact-card-value">${c.email}</div>
+                  </div>
+                </a>
+                <button type="button" class="copy-btn" id="copyEmailBtn">Copy</button>
+              </div>`);
+          }
+
+          if (c.fiverr) {
+            items.push(`
+              <a href="${c.fiverr}" target="_blank" rel="noopener noreferrer" class="contact-card">
+                <div class="contact-card-left">
+                  <div class="contact-card-icon" aria-hidden="true">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="contact-card-title">Fiverr</div>
+                    <div class="contact-card-value">View packages &amp; order on Fiverr</div>
+                  </div>
+                </div>
+                <span class="copy-btn">Open</span>
+              </a>`);
+          }
+
+          if (c.linkedin) {
+            items.push(`
+              <a href="${c.linkedin}" target="_blank" rel="noopener noreferrer" class="contact-card">
+                <div class="contact-card-left">
+                  <div class="contact-card-icon" aria-hidden="true">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                      <rect x="2" y="9" width="4" height="12" />
+                      <circle cx="4" cy="4" r="2" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="contact-card-title">LinkedIn</div>
+                    <div class="contact-card-value">${SITE_CONFIG.founderName}</div>
+                  </div>
+                </div>
+                <span class="copy-btn">Open</span>
+              </a>`);
+          }
+
+          if (c.whatsapp) {
+            items.push(`
+              <a href="${c.whatsapp}" target="_blank" rel="noopener noreferrer" class="contact-card">
+                <div class="contact-card-left">
+                  <div class="contact-card-icon" aria-hidden="true">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="contact-card-title">WhatsApp</div>
+                    <div class="contact-card-value">Chat directly on WhatsApp</div>
+                  </div>
+                </div>
+                <span class="copy-btn">Message</span>
+              </a>`);
+          }
+
+          if (c.instagram) {
+            items.push(`
+              <a href="${c.instagram}" target="_blank" rel="noopener noreferrer" class="contact-card">
+                <div class="contact-card-left">
+                  <div class="contact-card-icon" aria-hidden="true">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="2" width="20" height="20" rx="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="contact-card-title">Instagram</div>
+                    <div class="contact-card-value">Follow Autoverse</div>
+                  </div>
+                </div>
+                <span class="copy-btn">Open</span>
+              </a>`);
+          }
+
+          contactLinks.innerHTML = items.join('');
+
+          const copyBtn = document.getElementById('copyEmailBtn');
+          if (copyBtn && c.email) {
+            copyBtn.addEventListener('click', () => {
+              const markCopied = () => {
+                copyBtn.textContent = 'Copied';
+                setTimeout(() => {
+                  copyBtn.textContent = 'Copy';
+                }, 1800);
+              };
+
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(c.email).then(markCopied).catch(() => {
+                  fallbackCopy(c.email);
+                  markCopied();
+                });
+              } else {
+                fallbackCopy(c.email);
+                markCopied();
+              }
+            });
+          }
+
+          function fallbackCopy(text) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+              document.execCommand('copy');
+            } catch (_) {}
+            document.body.removeChild(ta);
+          }
+        }
+
+        // 7. Package Selection Pre-fill
+        const leadPackageSelect = document.getElementById('leadPackage');
+        document.addEventListener('click', (e) => {
+          const trigger = e.target.closest('[data-select-pkg]');
+          if (!trigger || !leadPackageSelect) return;
+          const pkgValue = trigger.getAttribute('data-select-pkg');
+          if (pkgValue) {
+            leadPackageSelect.value = pkgValue;
+          }
+        });
+
+        // 8. Mobile Drawer Toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        if (mobileBtn && mobileDrawer) {
+          mobileBtn.addEventListener('click', () => {
+            const isOpen = mobileDrawer.classList.toggle('open');
+            mobileBtn.setAttribute('aria-expanded', String(isOpen));
+          });
+
+          mobileDrawer.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+              mobileDrawer.classList.remove('open');
+              mobileBtn.setAttribute('aria-expanded', 'false');
+            });
+          });
+        }
+
+        // 9. FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach((item) => {
+          const btn = item.querySelector('.faq-trigger');
+          if (!btn) return;
+          btn.addEventListener('click', () => {
+            const willOpen = item.getAttribute('data-open') !== 'true';
+            faqItems.forEach((other) => {
+              other.setAttribute('data-open', 'false');
+              const otherBtn = other.querySelector('.faq-trigger');
+              if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+            });
+            item.setAttribute('data-open', String(willOpen));
+            btn.setAttribute('aria-expanded', String(willOpen));
+          });
+        });
+
+        // 10. Contact Form (Validates & Launches Pre-filled Mailto)
+        const form = document.getElementById('demoRequestForm');
+        const feedback = document.getElementById('formFeedback');
+        if (form && feedback) {
+          form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('leadName').value.trim();
+            const email = document.getElementById('leadEmail').value.trim();
+            const store = document.getElementById('leadStore').value.trim();
+            const pkg = document.getElementById('leadPackage').value;
+            const message = document.getElementById('leadMessage').value.trim();
+
+            if (!name || !email || !email.includes('@') || !message) {
+              feedback.className = 'form-feedback show err';
+              feedback.textContent = 'Please enter your name, a valid email address, and what you want to automate.';
+              return;
+            }
+
+            const subject = encodeURIComponent(`[${SITE_CONFIG.brandName}] ${pkg} Inquiry from ${name}`);
+            const body = encodeURIComponent(
+              `Name: ${name}\nEmail: ${email}\nStore URL: ${store || 'Not provided'}\nPackage: ${pkg}\n\nAutomation Goals:\n${message}`
+            );
+
+            feedback.className = 'form-feedback show ok';
+            feedback.textContent = `Ready! Opening your email app to send this request to ${SITE_CONFIG.contacts.email}.`;
+
+            window.location.href = `mailto:${SITE_CONFIG.contacts.email}?subject=${subject}&body=${body}`;
+          });
+        }
+
+        // 11. Subtle CSS 3D Mouse Tilt on Workflow Stage (Respects Reduced Motion)
+        const stage = document.getElementById('workflowStage');
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+
+        if (stage && !prefersReduced && hasFinePointer) {
+          let rafId = null;
+
+          stage.addEventListener('pointermove', (e) => {
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+              const rect = stage.getBoundingClientRect();
+              const x = (e.clientX - rect.left) / rect.width - 0.5;
+              const y = (e.clientY - rect.top) / rect.height - 0.5;
+              const rotateY = (x * 10).toFixed(2);
+              const rotateX = (-y * 8).toFixed(2);
+              stage.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+          });
+
+          stage.addEventListener('pointerleave', () => {
+            if (rafId) cancelAnimationFrame(rafId);
+            stage.style.transform = 'rotateX(0deg) rotateY(0deg)';
+          });
+        }
+
+        // 12. Message-Only Appointment Booking System (No Calls)
+        const bookingChannelsEl = document.getElementById('bookingChannels');
+        const bookingDaysEl = document.getElementById('bookingDays');
+        const bookingSlotsEl = document.getElementById('bookingSlots');
+        const bookingForm = document.getElementById('messageBookingForm');
+        const bookingError = document.getElementById('bookingError');
+        const bookingConfirm = document.getElementById('bookingConfirm');
+        const bookingSummaryText = document.getElementById('bookingSummaryText');
+        const bookingSendLink = document.getElementById('bookingSendLink');
+        const copyBookingBtn = document.getElementById('copyBookingBtn');
+
+        if (bookingChannelsEl && bookingDaysEl && bookingSlotsEl && bookingForm) {
+          const c = SITE_CONFIG.contacts;
+          const availableChannels = [];
+          if (c.email) availableChannels.push({ id: 'email', label: 'Email Chat', type: 'email', href: `mailto:${c.email}` });
+          if (c.fiverr) availableChannels.push({ id: 'fiverr', label: 'Fiverr Inbox', type: 'link', href: c.fiverr });
+          if (c.linkedin) availableChannels.push({ id: 'linkedin', label: 'LinkedIn DM', type: 'link', href: c.linkedin });
+          if (c.whatsapp) availableChannels.push({ id: 'whatsapp', label: 'WhatsApp Text', type: 'link', href: c.whatsapp });
+          if (c.instagram) availableChannels.push({ id: 'instagram', label: 'Instagram DM', type: 'link', href: c.instagram });
+
+          const upcomingDays = [];
+          const now = new Date();
+          for (let i = 0; i < 6; i++) {
+            const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+            const label =
+              i === 0
+                ? 'Today'
+                : i === 1
+                ? 'Tomorrow'
+                : d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+            const fullDate = d.toLocaleDateString('en-US', {
+              weekday: 'long',
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric'
+            });
+            upcomingDays.push({ label, fullDate });
+          }
+
+          const timeSlots = Array.isArray(SITE_CONFIG.bookingTimeSlots) && SITE_CONFIG.bookingTimeSlots.length
+            ? SITE_CONFIG.bookingTimeSlots
+            : ['10:00 AM – 1:00 PM BST', '2:00 PM – 5:00 PM BST', '6:00 PM – 9:00 PM BST'];
+
+          let selectedChannel = availableChannels[0] || { id: 'email', label: 'Email Chat', type: 'email', href: '#' };
+          let selectedDay = upcomingDays[0];
+          let selectedSlot = timeSlots[0];
+          let lastFormattedBooking = '';
+
+          function renderChoiceGroup(container, items, getLabel, isSelected, onPick) {
+            container.innerHTML = '';
+            items.forEach((item) => {
+              const btn = document.createElement('button');
+              btn.type = 'button';
+              btn.className = 'seg-btn' + (isSelected(item) ? ' active' : '');
+              btn.textContent = getLabel(item);
+              btn.setAttribute('aria-pressed', String(isSelected(item)));
+              btn.addEventListener('click', () => {
+                onPick(item);
+                renderAllBookingChoices();
+              });
+              container.appendChild(btn);
+            });
+          }
+
+          function renderAllBookingChoices() {
+            renderChoiceGroup(
+              bookingChannelsEl,
+              availableChannels,
+              (item) => item.label,
+              (item) => item.id === selectedChannel.id,
+              (item) => {
+                selectedChannel = item;
+              }
+            );
+
+            renderChoiceGroup(
+              bookingDaysEl,
+              upcomingDays,
+              (item) => item.label,
+              (item) => item.fullDate === selectedDay.fullDate,
+              (item) => {
+                selectedDay = item;
+              }
+            );
+
+            renderChoiceGroup(
+              bookingSlotsEl,
+              timeSlots,
+              (item) => item,
+              (item) => item === selectedSlot,
+              (item) => {
+                selectedSlot = item;
+              }
+            );
+          }
+
+          renderAllBookingChoices();
+
+          bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('bookName').value.trim();
+            const handle = document.getElementById('bookHandle').value.trim();
+            const topic = document.getElementById('bookTopic').value.trim();
+
+            if (!name || !handle) {
+              bookingError.classList.add('show');
+              bookingError.textContent = 'Please enter your name and your email or chat handle.';
+              bookingConfirm.classList.remove('show');
+              return;
+            }
+
+            bookingError.classList.remove('show');
+            bookingError.textContent = '';
+
+            lastFormattedBooking =
+              `Hi ${SITE_CONFIG.founderName}, I would like to book a message-only consultation (no call).\n` +
+              `Channel: ${selectedChannel.label}\n` +
+              `Date: ${selectedDay.fullDate}\n` +
+              `Time Window: ${selectedSlot}\n` +
+              `Name: ${name}\n` +
+              `Contact Handle/Email: ${handle}\n` +
+              `Store / Notes: ${topic || 'Store AI & automation discussion'}`;
+
+            bookingSummaryText.textContent =
+              `Slot reserved for ${selectedDay.fullDate} (${selectedSlot}) via ${selectedChannel.label} — text message only, no call.`;
+
+            if (selectedChannel.type === 'email' && c.email) {
+              const subject = encodeURIComponent(
+                `[${SITE_CONFIG.brandName}] Message Appointment — ${selectedDay.label} (${selectedSlot})`
+              );
+              const body = encodeURIComponent(lastFormattedBooking);
+              bookingSendLink.href = `mailto:${c.email}?subject=${subject}&body=${body}`;
+              bookingSendLink.removeAttribute('target');
+              bookingSendLink.removeAttribute('rel');
+              bookingSendLink.textContent = 'Send via Email';
+            } else {
+              bookingSendLink.href = selectedChannel.href;
+              bookingSendLink.target = '_blank';
+              bookingSendLink.rel = 'noopener noreferrer';
+              bookingSendLink.textContent = `Open ${selectedChannel.label} & Paste`;
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(lastFormattedBooking).catch(() => {});
+              }
+            }
+
+            bookingConfirm.classList.add('show');
+          });
+
+          if (copyBookingBtn) {
+            copyBookingBtn.addEventListener('click', () => {
+              if (!lastFormattedBooking) return;
+              const markBookedCopied = () => {
+                copyBookingBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                  copyBookingBtn.textContent = 'Copy Booking Details';
+                }, 1800);
+              };
+
+              const copyWithTextarea = () => {
+                const ta = document.createElement('textarea');
+                ta.value = lastFormattedBooking;
+                ta.setAttribute('readonly', '');
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                try {
+                  document.execCommand('copy');
+                } catch (_) {}
+                document.body.removeChild(ta);
+                markBookedCopied();
+              };
+
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard
+                  .writeText(lastFormattedBooking)
+                  .then(markBookedCopied)
+                  .catch(copyWithTextarea);
+              } else {
+                copyWithTextarea();
+              }
+            });
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
