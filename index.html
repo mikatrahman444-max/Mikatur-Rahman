@@ -128,8 +128,7 @@
       }
 
       section[id],
-      main[id],
-      #book-appointment {
+      main[id] {
         scroll-margin-top: 80px;
       }
 
@@ -740,132 +739,6 @@
         align-items: center;
         justify-content: center;
         gap: 12px;
-      }
-
-      /* Message-Only Appointment Booking */
-      .booking-box {
-        margin-top: 32px;
-        padding: 34px;
-        border-radius: var(--radius-lg);
-        background: var(--surface);
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow-card);
-      }
-
-      .booking-grid {
-        display: grid;
-        grid-template-columns: 0.9fr 1.1fr;
-        gap: 36px;
-        align-items: start;
-      }
-
-      .booking-intro h3 {
-        font-size: 24px;
-        font-weight: 700;
-        line-height: 1.25;
-        margin-bottom: 10px;
-      }
-
-      .booking-intro p {
-        font-size: 15px;
-        color: var(--text-muted);
-        margin-bottom: 20px;
-      }
-
-      .booking-rules {
-        display: grid;
-        gap: 10px;
-        padding-top: 18px;
-        border-top: 1px solid var(--border);
-        font-size: 14px;
-        color: var(--text-body);
-      }
-
-      .booking-rule {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .booking-rule svg {
-        color: var(--accent);
-        flex-shrink: 0;
-      }
-
-      .booking-step-label {
-        display: block;
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--text);
-        margin-bottom: 8px;
-      }
-
-      .channel-tabs,
-      .day-grid,
-      .slot-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 18px;
-      }
-
-      .seg-btn {
-        min-height: 40px;
-        padding: 8px 14px;
-        border-radius: 9px;
-        border: 1px solid var(--border-strong);
-        background: var(--bg);
-        color: var(--text-body);
-        font-size: 13.5px;
-        font-weight: 500;
-        white-space: nowrap;
-        flex-shrink: 0;
-        transition: border-color 150ms var(--ease), background-color 150ms var(--ease),
-          color 150ms var(--ease);
-      }
-
-      .seg-btn:hover {
-        border-color: var(--accent);
-        color: var(--text);
-      }
-
-      .seg-btn.active {
-        background: var(--accent-soft);
-        border-color: var(--accent);
-        color: var(--accent);
-        font-weight: 600;
-      }
-
-      .booking-confirm {
-        margin-top: 16px;
-        padding: 18px 20px;
-        border-radius: var(--radius-md);
-        background: var(--success-soft);
-        border: 1px solid rgba(15, 118, 110, 0.25);
-        display: none;
-      }
-
-      .booking-confirm.show {
-        display: block;
-      }
-
-      .booking-confirm h4 {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--success);
-        margin-bottom: 6px;
-      }
-
-      .booking-confirm p {
-        font-size: 14px;
-        color: var(--text-body);
-        margin-bottom: 14px;
-      }
-
-      .booking-confirm-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
       }
 
       /* 3. Problem + What We Do */
@@ -1737,11 +1610,6 @@
           flex-direction: column;
           align-items: flex-start;
         }
-
-        .booking-grid {
-          grid-template-columns: 1fr;
-          gap: 24px;
-        }
       }
 
       @media (max-width: 768px) {
@@ -1750,8 +1618,7 @@
         }
 
         section[id],
-        main[id],
-        #book-appointment {
+        main[id] {
           scroll-margin-top: 66px;
         }
 
@@ -1889,36 +1756,6 @@
         }
 
         .video-placeholder-actions .btn {
-          width: 100%;
-        }
-
-        .booking-box {
-          padding: 22px 18px;
-        }
-
-        .channel-tabs,
-        .day-grid,
-        .slot-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 8px;
-        }
-
-        .seg-btn {
-          width: 100%;
-          text-align: center;
-          padding: 9px 10px;
-          font-size: 12.5px;
-          white-space: normal;
-          line-height: 1.25;
-        }
-
-        .booking-confirm-actions {
-          flex-direction: column;
-          align-items: stretch;
-        }
-
-        .booking-confirm-actions .btn {
           width: 100%;
         }
 
@@ -2214,96 +2051,10 @@
                   We are recording a full walkthrough of our Shopify test-store workflows. Want to see how it fits your store first?
                 </p>
                 <div class="video-placeholder-actions">
-                  <a href="#book-appointment" class="btn btn-primary">Book a Message Appointment</a>
+                  <a href="#contact" class="btn btn-primary" data-select-pkg="Free Demo">
+                    Request a free custom demo
+                  </a>
                   <a href="#demos" class="btn btn-secondary">View Demo Projects</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Message-Only Appointment Booking System (No Calls) -->
-          <div class="booking-box" id="book-appointment">
-            <div class="booking-grid">
-              <div class="booking-intro">
-                <span class="kicker">Message-Only Appointment · No Calls</span>
-                <h3>Book a chat appointment after watching the demo</h3>
-                <p>
-                  Prefer text over phone or video calls? Reserve a dedicated message slot and we will chat directly on your preferred platform—clear, fast, and zero call pressure.
-                </p>
-                <div class="booking-rules">
-                  <div class="booking-rule">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                    </svg>
-                    <span>100% text &amp; message based — no audio or video calls</span>
-                  </div>
-                  <div class="booking-rule">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10" />
-                      <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                    <span>Available daily 10:00 AM – 11:00 PM BST (GMT+6)</span>
-                  </div>
-                  <div class="booking-rule">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                      <path d="M20 6 9 17l-5-5" />
-                    </svg>
-                    <span>Get a custom workflow outline for your store in chat</span>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <form id="messageBookingForm" novalidate>
-                  <span class="booking-step-label">1. Choose messaging channel</span>
-                  <div class="channel-tabs" id="bookingChannels" role="group" aria-label="Messaging channel"></div>
-
-                  <span class="booking-step-label">2. Pick a date</span>
-                  <div class="day-grid" id="bookingDays" role="group" aria-label="Appointment date"></div>
-
-                  <span class="booking-step-label">3. Pick a message window (GMT+6 / BST)</span>
-                  <div class="slot-grid" id="bookingSlots" role="group" aria-label="Appointment time window"></div>
-
-                  <div class="form-grid">
-                    <div class="form-row-2">
-                      <div class="field">
-                        <label for="bookName">Your name</label>
-                        <input id="bookName" type="text" placeholder="Alex Morgan" required />
-                      </div>
-                      <div class="field">
-                        <label for="bookHandle">Your email or chat handle</label>
-                        <input id="bookHandle" type="text" placeholder="alex@store.com or @handle" required />
-                      </div>
-                    </div>
-
-                    <div class="field">
-                      <label for="bookTopic">Store link &amp; quick message (optional)</label>
-                      <input
-                        id="bookTopic"
-                        type="text"
-                        placeholder="yourstore.com — interested in support bot + cart recovery"
-                      />
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-lg">
-                      Book Message Appointment
-                    </button>
-                  </div>
-                </form>
-
-                <div id="bookingError" class="form-feedback err" role="alert"></div>
-
-                <div id="bookingConfirm" class="booking-confirm" role="status" aria-live="polite">
-                  <h4>Message appointment ready to send</h4>
-                  <p id="bookingSummaryText"></p>
-                  <div class="booking-confirm-actions">
-                    <a id="bookingSendLink" href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                      Open Channel to Confirm
-                    </a>
-                    <button type="button" id="copyBookingBtn" class="btn btn-secondary">
-                      Copy Booking Details
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -2869,14 +2620,6 @@
         /* Demo Video: Paste a YouTube, Vimeo, or Loom embed URL when ready (e.g. "https://www.youtube.com/embed/VIDEO_ID"). Leave "" for placeholder. */
         demoVideoUrl: '',
 
-        /* Message-Only Appointment Time Windows (No Calls) */
-        bookingTimeSlots: [
-          '10:00 AM – 1:00 PM BST',
-          '2:00 PM – 5:00 PM BST',
-          '6:00 PM – 9:00 PM BST',
-          '9:00 PM – 11:00 PM BST'
-        ],
-
         /* About & Operations */
         targetMarket: 'E-commerce brands worldwide',
         timezone: 'GMT+6 (Bangladesh Standard Time)',
@@ -3410,191 +3153,6 @@
             if (rafId) cancelAnimationFrame(rafId);
             stage.style.transform = 'rotateX(0deg) rotateY(0deg)';
           });
-        }
-
-        // 12. Message-Only Appointment Booking System (No Calls)
-        const bookingChannelsEl = document.getElementById('bookingChannels');
-        const bookingDaysEl = document.getElementById('bookingDays');
-        const bookingSlotsEl = document.getElementById('bookingSlots');
-        const bookingForm = document.getElementById('messageBookingForm');
-        const bookingError = document.getElementById('bookingError');
-        const bookingConfirm = document.getElementById('bookingConfirm');
-        const bookingSummaryText = document.getElementById('bookingSummaryText');
-        const bookingSendLink = document.getElementById('bookingSendLink');
-        const copyBookingBtn = document.getElementById('copyBookingBtn');
-
-        if (bookingChannelsEl && bookingDaysEl && bookingSlotsEl && bookingForm) {
-          const c = SITE_CONFIG.contacts;
-          const availableChannels = [];
-          if (c.email) availableChannels.push({ id: 'email', label: 'Email Chat', type: 'email', href: `mailto:${c.email}` });
-          if (c.fiverr) availableChannels.push({ id: 'fiverr', label: 'Fiverr Inbox', type: 'link', href: c.fiverr });
-          if (c.linkedin) availableChannels.push({ id: 'linkedin', label: 'LinkedIn DM', type: 'link', href: c.linkedin });
-          if (c.whatsapp) availableChannels.push({ id: 'whatsapp', label: 'WhatsApp Text', type: 'link', href: c.whatsapp });
-          if (c.instagram) availableChannels.push({ id: 'instagram', label: 'Instagram DM', type: 'link', href: c.instagram });
-
-          const upcomingDays = [];
-          const now = new Date();
-          for (let i = 0; i < 6; i++) {
-            const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
-            const label =
-              i === 0
-                ? 'Today'
-                : i === 1
-                ? 'Tomorrow'
-                : d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-            const fullDate = d.toLocaleDateString('en-US', {
-              weekday: 'long',
-              month: 'short',
-              day: 'numeric',
-              year: 'numeric'
-            });
-            upcomingDays.push({ label, fullDate });
-          }
-
-          const timeSlots = Array.isArray(SITE_CONFIG.bookingTimeSlots) && SITE_CONFIG.bookingTimeSlots.length
-            ? SITE_CONFIG.bookingTimeSlots
-            : ['10:00 AM – 1:00 PM BST', '2:00 PM – 5:00 PM BST', '6:00 PM – 9:00 PM BST'];
-
-          let selectedChannel = availableChannels[0] || { id: 'email', label: 'Email Chat', type: 'email', href: '#' };
-          let selectedDay = upcomingDays[0];
-          let selectedSlot = timeSlots[0];
-          let lastFormattedBooking = '';
-
-          function renderChoiceGroup(container, items, getLabel, isSelected, onPick) {
-            container.innerHTML = '';
-            items.forEach((item) => {
-              const btn = document.createElement('button');
-              btn.type = 'button';
-              btn.className = 'seg-btn' + (isSelected(item) ? ' active' : '');
-              btn.textContent = getLabel(item);
-              btn.setAttribute('aria-pressed', String(isSelected(item)));
-              btn.addEventListener('click', () => {
-                onPick(item);
-                renderAllBookingChoices();
-              });
-              container.appendChild(btn);
-            });
-          }
-
-          function renderAllBookingChoices() {
-            renderChoiceGroup(
-              bookingChannelsEl,
-              availableChannels,
-              (item) => item.label,
-              (item) => item.id === selectedChannel.id,
-              (item) => {
-                selectedChannel = item;
-              }
-            );
-
-            renderChoiceGroup(
-              bookingDaysEl,
-              upcomingDays,
-              (item) => item.label,
-              (item) => item.fullDate === selectedDay.fullDate,
-              (item) => {
-                selectedDay = item;
-              }
-            );
-
-            renderChoiceGroup(
-              bookingSlotsEl,
-              timeSlots,
-              (item) => item,
-              (item) => item === selectedSlot,
-              (item) => {
-                selectedSlot = item;
-              }
-            );
-          }
-
-          renderAllBookingChoices();
-
-          bookingForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('bookName').value.trim();
-            const handle = document.getElementById('bookHandle').value.trim();
-            const topic = document.getElementById('bookTopic').value.trim();
-
-            if (!name || !handle) {
-              bookingError.classList.add('show');
-              bookingError.textContent = 'Please enter your name and your email or chat handle.';
-              bookingConfirm.classList.remove('show');
-              return;
-            }
-
-            bookingError.classList.remove('show');
-            bookingError.textContent = '';
-
-            lastFormattedBooking =
-              `Hi ${SITE_CONFIG.founderName}, I would like to book a message-only consultation (no call).\n` +
-              `Channel: ${selectedChannel.label}\n` +
-              `Date: ${selectedDay.fullDate}\n` +
-              `Time Window: ${selectedSlot}\n` +
-              `Name: ${name}\n` +
-              `Contact Handle/Email: ${handle}\n` +
-              `Store / Notes: ${topic || 'Store AI & automation discussion'}`;
-
-            bookingSummaryText.textContent =
-              `Slot reserved for ${selectedDay.fullDate} (${selectedSlot}) via ${selectedChannel.label} — text message only, no call.`;
-
-            if (selectedChannel.type === 'email' && c.email) {
-              const subject = encodeURIComponent(
-                `[${SITE_CONFIG.brandName}] Message Appointment — ${selectedDay.label} (${selectedSlot})`
-              );
-              const body = encodeURIComponent(lastFormattedBooking);
-              bookingSendLink.href = `mailto:${c.email}?subject=${subject}&body=${body}`;
-              bookingSendLink.removeAttribute('target');
-              bookingSendLink.removeAttribute('rel');
-              bookingSendLink.textContent = 'Send via Email';
-            } else {
-              bookingSendLink.href = selectedChannel.href;
-              bookingSendLink.target = '_blank';
-              bookingSendLink.rel = 'noopener noreferrer';
-              bookingSendLink.textContent = `Open ${selectedChannel.label} & Paste`;
-              if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(lastFormattedBooking).catch(() => {});
-              }
-            }
-
-            bookingConfirm.classList.add('show');
-          });
-
-          if (copyBookingBtn) {
-            copyBookingBtn.addEventListener('click', () => {
-              if (!lastFormattedBooking) return;
-              const markBookedCopied = () => {
-                copyBookingBtn.textContent = 'Copied!';
-                setTimeout(() => {
-                  copyBookingBtn.textContent = 'Copy Booking Details';
-                }, 1800);
-              };
-
-              const copyWithTextarea = () => {
-                const ta = document.createElement('textarea');
-                ta.value = lastFormattedBooking;
-                ta.setAttribute('readonly', '');
-                ta.style.position = 'fixed';
-                ta.style.opacity = '0';
-                document.body.appendChild(ta);
-                ta.select();
-                try {
-                  document.execCommand('copy');
-                } catch (_) {}
-                document.body.removeChild(ta);
-                markBookedCopied();
-              };
-
-              if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard
-                  .writeText(lastFormattedBooking)
-                  .then(markBookedCopied)
-                  .catch(copyWithTextarea);
-              } else {
-                copyWithTextarea();
-              }
-            });
-          }
         }
       })();
     </script>
