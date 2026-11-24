@@ -87,7 +87,6 @@
       html {
         scroll-behavior: smooth;
         -webkit-text-size-adjust: 100%;
-        overflow-x: clip;
       }
 
       body {
@@ -98,7 +97,6 @@
         font-size: 16px;
         line-height: 1.7;
         -webkit-font-smoothing: antialiased;
-        overflow-x: clip;
       }
 
       ::selection {
@@ -229,6 +227,7 @@
       .site-footer {
         position: relative;
         z-index: 1;
+        overflow-x: clip;
       }
 
       .container {
@@ -323,10 +322,9 @@
       .site-header {
         position: fixed;
         top: 16px;
-        left: 50%;
-        transform: translate3d(-50%, 0, 0);
-        will-change: transform;
-        backface-visibility: hidden;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
         width: calc(100% - 32px);
         max-width: 1100px;
         z-index: 1000;
@@ -354,14 +352,13 @@
           top: 0;
           left: 0;
           right: 0;
-          height: 112px;
+          height: 104px;
           z-index: 990;
           pointer-events: none;
-          transform: translateZ(0);
           background: linear-gradient(
             180deg,
-            rgba(255, 255, 255, 0.92) 0%,
-            rgba(255, 255, 255, 0.48) 42%,
+            rgba(255, 255, 255, 0.96) 0%,
+            rgba(255, 255, 255, 0.72) 48%,
             rgba(255, 255, 255, 0) 100%
           );
         }
@@ -371,12 +368,12 @@
           --mouse-y: 50%;
           background: linear-gradient(
             180deg,
-            rgba(255, 255, 255, 0.78) 0%,
-            rgba(255, 255, 255, 0.68) 100%
+            rgba(255, 255, 255, 0.86) 0%,
+            rgba(255, 255, 255, 0.8) 100%
           );
-          backdrop-filter: blur(56px) saturate(185%);
-          -webkit-backdrop-filter: blur(56px) saturate(185%);
-          border: 1px solid rgba(255, 255, 255, 0.88);
+          backdrop-filter: blur(32px) saturate(180%);
+          -webkit-backdrop-filter: blur(32px) saturate(180%);
+          border: 1px solid rgba(255, 255, 255, 0.9);
           box-shadow:
             0 10px 30px -6px rgba(15, 23, 42, 0.09),
             inset 0 1px 1px rgba(255, 255, 255, 0.96);
@@ -406,12 +403,12 @@
         .site-header.scrolled {
           background: linear-gradient(
             180deg,
-            rgba(255, 255, 255, 0.8) 0%,
-            rgba(255, 255, 255, 0.7) 100%
+            rgba(255, 255, 255, 0.88) 0%,
+            rgba(255, 255, 255, 0.82) 100%
           );
-          backdrop-filter: blur(56px) saturate(185%);
-          -webkit-backdrop-filter: blur(56px) saturate(185%);
-          border-color: rgba(255, 255, 255, 0.92);
+          backdrop-filter: blur(32px) saturate(180%);
+          -webkit-backdrop-filter: blur(32px) saturate(180%);
+          border-color: rgba(255, 255, 255, 0.94);
           box-shadow:
             0 12px 34px -6px rgba(15, 23, 42, 0.12),
             inset 0 1px 1px rgba(255, 255, 255, 0.98);
