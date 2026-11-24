@@ -223,6 +223,40 @@
         }
       }
 
+      .cursor-aura {
+        display: none;
+      }
+
+      @media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+        .cursor-aura {
+          display: block;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 640px;
+          height: 640px;
+          margin-left: -320px;
+          margin-top: -320px;
+          border-radius: 50%;
+          pointer-events: none;
+          opacity: 0;
+          will-change: transform, opacity;
+          background: radial-gradient(
+            circle,
+            rgba(99, 50, 240, 0.16) 0%,
+            rgba(124, 82, 255, 0.1) 26%,
+            rgba(237, 232, 255, 0.28) 52%,
+            transparent 74%
+          );
+          filter: blur(28px);
+          transition: opacity 320ms var(--ease);
+        }
+
+        .cursor-aura.active {
+          opacity: 1;
+        }
+      }
+
       main,
       .site-footer {
         position: relative;
@@ -2797,6 +2831,10 @@
           transform: none !important;
           animation: none !important;
         }
+
+        .cursor-aura {
+          display: none !important;
+        }
       }
     </style>
   </head>
@@ -2809,6 +2847,7 @@
       <div class="orb-parallax orb-2" data-orb-parallax="-0.07"><div class="orb-bubble"></div></div>
       <div class="orb-parallax orb-3" data-orb-parallax="0.11"><div class="orb-bubble"></div></div>
       <div class="orb-parallax orb-4" data-orb-parallax="-0.08"><div class="orb-bubble"></div></div>
+      <div class="cursor-aura" id="cursorAura"></div>
     </div>
 
     <!-- Progressive Top Ambient Blur Curtain (Desktop Only) -->
@@ -4480,6 +4519,65 @@
           if (mobileBtn) {
             mobileBtn.addEventListener('click', () => setTimeout(syncMobileSticky, 20));
           }
+        }
+
+        // 16. Background Cursor-Following Ambient Glow (Desktop Fine Pointer)
+        const cursorAura = document.getElementById('cursorAura');
+        if (cursorAura && !prefersReduced && hasFinePointer) {
+          let targetX = 0;
+          let targetY = 0;
+          let currentX = 0;
+          let currentY = 0;
+          let auraRaf = null;
+          let hasInitialized = false;
+
+          function tickAura() {
+            const dx = targetX - currentX;
+            const dy = targetY - currentY;
+
+            if (Math.abs(dx) < 0.25 && Math.abs(dy) < 0.25) {
+              currentX = targetX;
+              currentY = targetY;
+              cursorAura.style.transform = `translate3d(${currentX.toFixed(1)}px, ${currentY.toFixed(1)}px, 0)`;
+              auraRaf = null;
+              return;
+            }
+
+            currentX += dx * 0.16;
+            currentY += dy * 0.16;
+            cursorAura.style.transform = `translate3d(${currentX.toFixed(1)}px, ${currentY.toFixed(1)}px, 0)`;
+            auraRaf = requestAnimationFrame(tickAura);
+          }
+
+          window.addEventListener(
+            'pointermove',
+            (e) => {
+              if (window.innerWidth < 768 || e.pointerType === 'touch') return;
+              targetX = e.clientX;
+              targetY = e.clientY;
+
+              if (!hasInitialized) {
+                currentX = targetX;
+                currentY = targetY;
+                cursorAura.style.transform = `translate3d(${currentX.toFixed(1)}px, ${currentY.toFixed(1)}px, 0)`;
+                hasInitialized = true;
+              }
+
+              cursorAura.classList.add('active');
+              if (!auraRaf) {
+                auraRaf = requestAnimationFrame(tickAura);
+              }
+            },
+            { passive: true }
+          );
+
+          document.documentElement.addEventListener('mouseleave', () => {
+            cursorAura.classList.remove('active');
+          });
+
+          window.addEventListener('blur', () => {
+            cursorAura.classList.remove('active');
+          });
         }
       })();
     </script>
