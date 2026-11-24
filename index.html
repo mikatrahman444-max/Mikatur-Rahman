@@ -355,26 +355,26 @@
           left: 0;
           right: 0;
           height: 120px;
-          z-index: 999;
+          z-index: 990;
           pointer-events: none;
           transform: translateZ(0);
           will-change: transform;
           backface-visibility: hidden;
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
-          background: linear-gradient(to bottom, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 100%);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          background: linear-gradient(to bottom, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 100%);
           mask-image: linear-gradient(
             to top,
             transparent 0%,
-            rgba(0, 0, 0, 0.15) 25%,
-            rgba(0, 0, 0, 0.6) 60%,
+            rgba(0, 0, 0, 0.2) 30%,
+            rgba(0, 0, 0, 0.65) 65%,
             black 100%
           );
           -webkit-mask-image: linear-gradient(
             to top,
             transparent 0%,
-            rgba(0, 0, 0, 0.15) 25%,
-            rgba(0, 0, 0, 0.6) 60%,
+            rgba(0, 0, 0, 0.2) 30%,
+            rgba(0, 0, 0, 0.65) 65%,
             black 100%
           );
         }
@@ -382,9 +382,10 @@
         .site-header {
           --mouse-x: 50%;
           --mouse-y: 50%;
-          background: rgba(255, 255, 255, 0.78);
-          backdrop-filter: blur(28px) saturate(160%);
-          -webkit-backdrop-filter: blur(28px) saturate(160%);
+          background: rgba(255, 255, 255, 0.72);
+          background-color: rgba(255, 255, 255, 0.72);
+          backdrop-filter: blur(48px) saturate(180%);
+          -webkit-backdrop-filter: blur(48px) saturate(180%);
           border: 1px solid rgba(255, 255, 255, 0.85);
           box-shadow:
             0 10px 30px -6px rgba(15, 23, 42, 0.08),
@@ -413,7 +414,10 @@
         }
 
         .site-header.scrolled {
-          background: rgba(255, 255, 255, 0.78);
+          background: rgba(255, 255, 255, 0.72);
+          background-color: rgba(255, 255, 255, 0.72);
+          backdrop-filter: blur(48px) saturate(180%);
+          -webkit-backdrop-filter: blur(48px) saturate(180%);
           border-color: rgba(255, 255, 255, 0.9);
           box-shadow:
             0 12px 34px -6px rgba(15, 23, 42, 0.11),
