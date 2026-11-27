@@ -2296,6 +2296,38 @@
         border: 1px solid rgba(220, 38, 38, 0.22);
       }
 
+      .form-feedback-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .form-feedback-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 14px;
+        border-radius: 999px;
+        font-size: 13.5px;
+        font-weight: 600;
+        text-decoration: none;
+        background: #0f766e;
+        color: #ffffff;
+        transition: opacity 160ms var(--ease);
+      }
+
+      .form-feedback-link:hover {
+        opacity: 0.9;
+      }
+
+      .form-feedback-link.secondary {
+        background: rgba(15, 118, 110, 0.12);
+        color: var(--success);
+        border: 1px solid rgba(15, 118, 110, 0.28);
+      }
+
       /* Footer */
       .site-footer {
         border-top: 1px solid rgba(15, 23, 42, 0.08);
@@ -3896,9 +3928,14 @@
           const items = [];
 
           if (c.email) {
+            const isMobileUa = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+            const emailHref = isMobileUa
+              ? `mailto:${c.email}`
+              : `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(c.email)}`;
+            const emailTargetAttrs = isMobileUa ? '' : ' target="_blank" rel="noopener noreferrer"';
             items.push(`
               <div class="contact-card">
-                <a href="mailto:${c.email}" class="contact-card-left">
+                <a href="${emailHref}"${emailTargetAttrs} class="contact-card-left">
                   <div class="contact-card-icon" aria-hidden="true">
                     <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -4226,7 +4263,7 @@
           });
         });
 
-        // 10. Contact Form (Loading + Success State -> Pre-filled Mailto)
+        // 10. Contact Form (Direct Gmail Compose on PC / Mail App on Mobile)
         const form = document.getElementById('demoRequestForm');
         const feedback = document.getElementById('formFeedback');
         const submitBtn = document.getElementById('submitDemoBtn');
@@ -4245,30 +4282,67 @@
               return;
             }
 
-            const subject = encodeURIComponent(`[${SITE_CONFIG.brandName}] ${pkg} Inquiry from ${name}`);
-            const body = encodeURIComponent(
-              `Name: ${name}\nEmail: ${email}\nStore URL: ${store || 'Not provided'}\nPackage: ${pkg}\n\nAutomation Goals:\n${message}`
-            );
+            const toEmail = SITE_CONFIG.contacts.email;
+            const subjectText = `[${SITE_CONFIG.brandName}] ${pkg} Inquiry from ${name}`;
+            const bodyText = `Name: ${name}\nEmail: ${email}\nStore URL: ${store || 'Not provided'}\nPackage: ${pkg}\n\nAutomation Goals:\n${message}`;
+            const subject = encodeURIComponent(subjectText);
+            const body = encodeURIComponent(bodyText);
 
-            submitBtn.disabled = true;
-            submitBtn.classList.remove('is-success');
-            submitBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span><span>Preparing request...</span>';
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(toEmail)}&su=${subject}&body=${body}`;
+            const mailtoUrl = `mailto:${toEmail}?subject=${subject}&body=${body}`;
+            const isMobileDevice = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+
+            // Launch synchronously within the user submit gesture so browsers do not block it
+            const launcher = document.createElement('a');
+            if (isMobileDevice) {
+              launcher.href = mailtoUrl;
+            } else {
+              launcher.href = gmailUrl;
+              launcher.target = '_blank';
+              launcher.rel = 'noopener noreferrer';
+            }
+            launcher.style.display = 'none';
+            document.body.appendChild(launcher);
+            launcher.click();
+            document.body.removeChild(launcher);
+
+            submitBtn.classList.add('is-success');
+            submitBtn.innerHTML = isMobileDevice
+              ? '<span>Request Ready — Opening Email</span>'
+              : '<span>Request Ready — Opening Gmail</span>';
+
+            feedback.className = 'form-feedback show ok';
+            feedback.replaceChildren();
+
+            const statusMsg = document.createElement('div');
+            statusMsg.textContent = isMobileDevice
+              ? `Ready! Opening your email app to send this request to ${toEmail}.`
+              : `Opening Gmail with your pre-filled message to ${toEmail}. If a tab didn't open, use the button below:`;
+            feedback.appendChild(statusMsg);
+
+            const actions = document.createElement('div');
+            actions.className = 'form-feedback-actions';
+
+            const gmailLink = document.createElement('a');
+            gmailLink.href = gmailUrl;
+            gmailLink.target = '_blank';
+            gmailLink.rel = 'noopener noreferrer';
+            gmailLink.className = 'form-feedback-link';
+            gmailLink.textContent = 'Open Gmail Compose';
+
+            const mailLink = document.createElement('a');
+            mailLink.href = mailtoUrl;
+            mailLink.className = 'form-feedback-link secondary';
+            mailLink.textContent = 'Default Mail App';
+
+            actions.appendChild(gmailLink);
+            actions.appendChild(mailLink);
+            feedback.appendChild(actions);
 
             setTimeout(() => {
-              submitBtn.disabled = false;
-              submitBtn.classList.add('is-success');
-              submitBtn.innerHTML = '<span>Request Ready — Opening Email</span>';
-
-              feedback.className = 'form-feedback show ok';
-              feedback.textContent = `Ready! Opening your email app to send this request to ${SITE_CONFIG.contacts.email}.`;
-
-              window.location.href = `mailto:${SITE_CONFIG.contacts.email}?subject=${subject}&body=${body}`;
-
-              setTimeout(() => {
-                submitBtn.classList.remove('is-success');
-                submitBtn.innerHTML = '<span>Send Demo Request</span>';
-              }, 3500);
-            }, 380);
+              submitBtn.classList.remove('is-success');
+              submitBtn.innerHTML = '<span>Send Demo Request</span>';
+            }, 3500);
           });
         }
 
